@@ -1,10 +1,13 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": ["@tsconfig/next/tsconfig.json", "@tsconfig/node18/tsconfig.json", "@tsconfig/strictest/tsconfig.json"],
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -12,10 +15,22 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "jsxImportSource": "@emotion/react",
     "incremental": true,
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@public/*": ["./public/*"],
+      "@publicAssets/*": ["./public/assets/*"],
+      "@publicImages/*": ["./public/assets/images/*"],
+      "@assets/*": ["./assets/*"],
+      "@images/*": ["./assets/images/*"],
+      "@components/*": ["./components/*"],
+      "@modules/*": ["./modules/*"],
+      "@pages/*": ["./pages/*"],
+      "@hooks/*": ["./hooks/*"],
+      "@/*": ["./*"]
+    },
+    "noPropertyAccessFromIndexSignature": false,
+    "verbatimModuleSyntax": false
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
