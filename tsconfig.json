@@ -27,6 +27,8 @@
       "@modules/*": ["./modules/*"],
       "@pages/*": ["./pages/*"],
       "@hooks/*": ["./hooks/*"],
+      "@common-styles": ["./styles/common.ts"],
+      "@common-data": ["./common-data.ts"],
       "@/*": ["./*"]
     },
     "noPropertyAccessFromIndexSignature": false,
