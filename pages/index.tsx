@@ -1,7 +1,9 @@
-export default function Home() {
+import Home from "@modules/home";
+
+export default function HomePage() {
   return (
-    <main>
-      <div>hello</div>
-    </main>
+    <div className="page-wrapper">
+      <Home />
+    </div>
   );
 }

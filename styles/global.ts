@@ -14,9 +14,13 @@ export const globalStyles = css`
     --color-secondary-neutral: #f5e4d7;
 
     --color-white: #fdfdff;
-    --color-black: #1c1c1c;
-    --color-grey: #434343;
+    --color-black: #3c3c3c;
+    --color-grey: #e9e9e9;
     --color-gray: var(--color-grey);
+    --color-dark-grey: #d9d9d9;
+    --color-dark-gray: var(--color-dark-grey);
+    --color-xDark-grey: #686868;
+    --color-xDark-gray: var(--color-xDark-grey);
 
     --max-content-width: 1400px;
 
@@ -33,9 +37,18 @@ export const globalStyles = css`
   #__next {
     background-color: var(--color-white);
   }
-  main {
+  .page-wrapper {
     padding-top: var(--header-height);
     display: flex;
     flex-direction: column;
+  }
+  ::selection {
+    background: var(--color-secondary-highlight);
+    color: var(--color-white);
+  }
+
+  ::-moz-selection {
+    background: var(--color-secondary-highlight);
+    color: var(--color-white);
   }
 `;
