@@ -1,16 +1,12 @@
-import { mediaQuery } from "@common-styles";
 import { css } from "@emotion/react";
+import { mediaQuery } from "@common-styles";
 
 export const headerWrapperCss = css`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: var(--color-primary-highlight);
   height: var(--header-height);
   color: var(--color-white);
   z-index: 999;
   position: fixed;
-  width: 100%;
 `;
 
 export const headerContainerCss = css`
@@ -18,8 +14,6 @@ export const headerContainerCss = css`
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  width: 90%;
-  max-width: var(--max-content-width);
 `;
 
 export const logoContainerCss = css`
@@ -34,7 +28,6 @@ export const otherContentCss = css`
   justify-content: center;
   align-items: center;
   gap: 40px;
-  font-family: var(--font-primary);
   font-size: 0.85rem;
   font-weight: 500;
 `;

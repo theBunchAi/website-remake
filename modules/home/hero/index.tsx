@@ -8,9 +8,9 @@ export default function HomeHeroSection() {
   const headingHtml = text.replace(placeholder, `<span>${placeholderText}</span>`);
 
   return (
-    <div css={heroWrapperCss}>
+    <section css={heroWrapperCss}>
       <HomeHeroVideo />
       <h1 dangerouslySetInnerHTML={{ __html: headingHtml }} css={heroHeadingCss}></h1>
-    </div>
+    </section>
   );
 }

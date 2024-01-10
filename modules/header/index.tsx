@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { navBarContent } from "@common-data";
+import FullWidthWrapper from "@components/full-width-wrapper";
 import Nav from "@modules/header/nav";
 import {
   hamContainerCss,
@@ -23,25 +24,27 @@ export default function Header() {
     }
   };
   return (
-    <header css={headerWrapperCss}>
-      <div className="header-container" css={headerContainerCss}>
-        <div className="logo" css={logoContainerCss}>
-          <span>{leftText}</span>
+    <FullWidthWrapper
+      element="header"
+      css={headerWrapperCss}
+      secondContainer={<Nav ref={navRef} />}
+      containerCss={headerContainerCss}
+    >
+      <div className="logo" css={logoContainerCss}>
+        <span>{leftText}</span>
+      </div>
+      <div className="other-content" css={otherContentCss}>
+        <div className="location-container" css={locationContainerCss}>
+          <span>{locationText}</span>
+          <span>to be decided</span>
         </div>
-        <div className="other-content" css={otherContentCss}>
-          <div className="location-container" css={locationContainerCss}>
-            <span>{locationText}</span>
-            <span>to be decided</span>
-          </div>
-          <div className="ham-btn" css={hamContainerCss} onClick={hamClickHandler} ref={hamRef}>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
+        <div className="ham-btn" css={hamContainerCss} onClick={hamClickHandler} ref={hamRef}>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
       </div>
-      <Nav ref={navRef} />
-    </header>
+    </FullWidthWrapper>
   );
 }

@@ -2,17 +2,11 @@ import { css } from "@emotion/react";
 import { mediaQuery } from "@common-styles";
 
 export const footerWrapperCss = css`
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background-color: var(--color-grey);
-  width: 100%;
 `;
 
 export const footerUpperWrapperCss = css`
-  width: 90%;
-  max-width: var(--max-content-width);
   display: grid;
   grid-template-columns: 2fr 1fr;
   padding: 2.5em 0;
@@ -34,7 +28,6 @@ export const footerLowerWrapperCss = css`
   gap: 0.25em;
   padding: 0.75em 0;
   font-size: 0.85rem;
-  font-family: var(--font-primary);
   color: var(--color-black);
   text-align: center;
   & a {
@@ -65,7 +58,6 @@ export const mainNavWrapperCss = css`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  font-family: var(--font-primary);
   gap: 5px;
   grid-auto-flow: column;
   & > * {
@@ -81,7 +73,6 @@ export const mainNavWrapperCss = css`
 `;
 
 export const socialsWrapperCss = css`
-  font-family: var(--font-primary);
   color: var(--color-xDark-grey);
   font-weight: 500;
   display: flex;

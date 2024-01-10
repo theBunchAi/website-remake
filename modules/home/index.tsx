@@ -1,9 +1,12 @@
+import HomeFeaturedSection from "@modules/home/featured";
 import HomeHeroSection from "@modules/home/hero";
+import { homeWrapperCss } from "@modules/home/styles";
 
 export default function Home() {
   return (
-    <section>
+    <div css={homeWrapperCss}>
       <HomeHeroSection />
-    </section>
+      <HomeFeaturedSection />
+    </div>
   );
 }

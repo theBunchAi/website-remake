@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { footerContent } from "@common-data";
+import FullWidthWrapper from "@components/full-width-wrapper";
 import {
   footerLowerWrapperCss,
   footerUpperWrapperCss,
@@ -44,20 +45,25 @@ export default function Footer() {
       </a>
     );
   };
+  const lowerJsx = (
+    <div className="attribute" css={footerLowerWrapperCss}>
+      <span dangerouslySetInnerHTML={{ __html: attributesHtml }} />
+      <span>{bottomText}</span>
+    </div>
+  );
   return (
-    <footer css={footerWrapperCss}>
-      <div className="foot-nav" css={footerUpperWrapperCss}>
-        <span css={mainTopTextCss}>{footerTopText}</span>
-        <nav css={mainNavWrapperCss}>{nav.map(navMapper)}</nav>
-        <div className="socials" css={socialsWrapperCss}>
-          <span>{socialsTopText}</span>
-          <nav>{socialLinks.map(socialsMapper)}</nav>
-        </div>
+    <FullWidthWrapper
+      element="footer"
+      css={footerWrapperCss}
+      secondContainer={lowerJsx}
+      containerCss={footerUpperWrapperCss}
+    >
+      <span css={mainTopTextCss}>{footerTopText}</span>
+      <nav css={mainNavWrapperCss}>{nav.map(navMapper)}</nav>
+      <div className="socials" css={socialsWrapperCss}>
+        <span>{socialsTopText}</span>
+        <nav>{socialLinks.map(socialsMapper)}</nav>
       </div>
-      <div className="attribute" css={footerLowerWrapperCss}>
-        <span dangerouslySetInnerHTML={{ __html: attributesHtml }} />
-        <span>{bottomText}</span>
-      </div>
-    </footer>
+    </FullWidthWrapper>
   );
 }

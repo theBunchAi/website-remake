@@ -23,6 +23,7 @@ export const globalStyles = css`
     --color-xDark-gray: var(--color-xDark-grey);
 
     --max-content-width: 1400px;
+    --common-border-radius: 8px;
 
     --font-primary: "DM Sans", sans-serif;
     --font-heading: "Outfit", sans-serif;
@@ -50,5 +51,34 @@ export const globalStyles = css`
   ::-moz-selection {
     background: var(--color-secondary-highlight);
     color: var(--color-white);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+  body {
+    font-family: var(--font-primary);
+    color: var(--color-black);
+  }
+
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  ::-webkit-scrollbar:horizontal {
+    height: 0.5em;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-xDark-grey);
+    border-radius: 1rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
   }
 `;
