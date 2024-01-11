@@ -27,31 +27,47 @@ export const featuredNavButtonsCss = css`
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--color-black);
+  color: var(--color-secondary-highlight);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  & > * {
-    font-size: 250%;
-    color: inherit;
+  ${mediaQuery.desktop} {
+    &.no-desktop {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
   }
   ${mediaQuery.mobile} {
     width: 10%;
+    &.no-mobile {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
   }
+`;
+export const featuredArrowIconCss = css`
+  font-size: 2.25rem;
+  color: inherit;
 `;
 
 export const featuredCardsContainerCss = css`
   display: flex;
   align-items: center;
   width: 90%;
-  overflow-x: auto;
+  overflow-x: scroll;
   scroll-snap-type: x mandatory;
   gap: 5vw;
-  padding-bottom: 10px;
+  padding: 10px 0;
   ${mediaQuery.mobile} {
     width: var(--_card-size);
+    padding: 0px;
     gap: 0;
+    ::-webkit-scrollbar:horizontal {
+      height: 0em;
+    }
   }
 `;
 
@@ -63,7 +79,6 @@ export const featuredCardCss = css`
   max-width: 347.15px;
   max-height: 347.15px;
   color: var(--color-white);
-
   ${mediaQuery.mobile} {
     padding: 5%;
     max-width: unset;
@@ -106,9 +121,9 @@ export const dotCss = css`
     transition: all 0.3s ease;
   }
   &.active {
-    background-color: var(--color-black);
+    background-color: var(--color-primary-highlight);
     &::before {
-      border: 2px solid var(--color-black);
+      border: 2px solid var(--color-primary-highlight);
     }
   }
 `;

@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
-import { featuredLocationContainerCss } from "@components/featured-card/styles";
-import { FeaturedCardLocationProps } from "@components/featured-card/types";
+import { featuredLocationContainerCss } from "@components/featured-event-card/styles";
+import { FeaturedCardLocationProps } from "@components/featured-event-card/types";
 const ArrowRightAltRoundedIcon = dynamic(() => import("@mui/icons-material/ArrowRightAltRounded"), {
   ssr: false,
   loading: () => <>→</>

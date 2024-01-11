@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import Location from "@components/featured-card/location";
+import Location from "@components/featured-event-card/location";
 import {
   featuredCardBottomCss,
   featuredCardContainerCss,
@@ -8,10 +8,10 @@ import {
   featuredCardGradientCss,
   featuredCardWrapperCss,
   featuredLimitedSeatsCss
-} from "@components/featured-card/styles";
-import type { FeaturedCardProps } from "@components/featured-card/types";
+} from "@components/featured-event-card/styles";
+import type { FeaturedCardProps } from "@components/featured-event-card/types";
 
-export default function FeaturedCard(props: FeaturedCardProps) {
+export default function FeaturedEventCard(props: FeaturedCardProps) {
   const {
     date,
     hasLimitedSeates = false,

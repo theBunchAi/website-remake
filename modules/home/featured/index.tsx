@@ -1,9 +1,11 @@
+import { useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
-import FeaturedCard from "@components/featured-card";
+import FeaturedEventCard from "@components/featured-event-card";
 import FullWidthWrapper from "@components/full-width-wrapper";
 import {
   dotCss,
   dotsContainerCss,
+  featuredArrowIconCss,
   featuredCardCss,
   featuredCardsContainerCss,
   featuredCardsWrapperCss,
@@ -11,7 +13,6 @@ import {
   homeFeaturedContainerCss,
   homeFeaturedHeadingCss
 } from "@modules/home/featured/styles";
-import { useEffect, useRef } from "react";
 const ChevronLeftRoundedIcon = dynamic(() => import("@mui/icons-material/ChevronLeftRounded"), {
   ssr: false,
   loading: () => <>{"<"}</>
@@ -24,6 +25,8 @@ const ChevronRightRoundedIcon = dynamic(() => import("@mui/icons-material/Chevro
 export default function HomeFeaturedSection() {
   const cardsContainerRef = useRef<HTMLDivElement>(null);
   const dotsContainerRef = useRef<HTMLDivElement>(null);
+  const leftArrowRef = useRef<HTMLButtonElement>(null);
+  const rightArrowRef = useRef<HTMLButtonElement>(null);
   const getSingleCardWidth = () => {
     const card = cardsContainerRef.current?.firstChild as HTMLDivElement;
     return card?.offsetWidth ?? 0;
@@ -58,6 +61,14 @@ export default function HomeFeaturedSection() {
   useEffect(() => {
     const cardsContainer = cardsContainerRef.current;
     const allCards = Array.from(cardsContainer?.children ?? []) as HTMLDivElement[];
+    if (allCards.length <= 3) {
+      leftArrowRef.current?.classList.add("no-desktop");
+      rightArrowRef.current?.classList.add("no-desktop");
+    }
+    if (allCards.length === 1) {
+      leftArrowRef.current?.classList.add("no-mobile");
+      rightArrowRef.current?.classList.add("no-mobile");
+    }
     const observerOptions: IntersectionObserverInit = {
       root: cardsContainer,
       threshold: 0.6
@@ -86,11 +97,12 @@ export default function HomeFeaturedSection() {
           onClick={leftClickHandler}
           type="button"
           aria-label="Featured Events | Slide left"
+          ref={leftArrowRef}
         >
-          <ChevronLeftRoundedIcon />
+          <ChevronLeftRoundedIcon css={featuredArrowIconCss} />
         </button>
         <div css={featuredCardsContainerCss} ref={cardsContainerRef}>
-          <FeaturedCard
+          <FeaturedEventCard
             date={new Date()}
             image={{
               src: "https://images.pexels.com/photos/9072250/pexels-photo-9072250.jpeg",
@@ -103,7 +115,7 @@ export default function HomeFeaturedSection() {
             link="/events/gok-trek"
             css={featuredCardCss}
           />
-          <FeaturedCard
+          <FeaturedEventCard
             date={new Date()}
             image={{
               // eslint-disable-next-line max-len
@@ -117,7 +129,7 @@ export default function HomeFeaturedSection() {
             link="/events/gok-trek"
             css={featuredCardCss}
           />
-          <FeaturedCard
+          <FeaturedEventCard
             date={new Date()}
             image={{
               // eslint-disable-next-line max-len
@@ -130,7 +142,7 @@ export default function HomeFeaturedSection() {
             link="/events/gok-trek"
             css={featuredCardCss}
           />
-          <FeaturedCard
+          <FeaturedEventCard
             date={new Date()}
             image={{
               src: "https://images.pexels.com/photos/9072250/pexels-photo-9072250.jpeg",
@@ -142,7 +154,7 @@ export default function HomeFeaturedSection() {
             link="/events/gok-trek"
             css={featuredCardCss}
           />
-          <FeaturedCard
+          <FeaturedEventCard
             date={new Date()}
             image={{
               src: "https://images.pexels.com/photos/9072250/pexels-photo-9072250.jpeg",
@@ -160,8 +172,9 @@ export default function HomeFeaturedSection() {
           onClick={rightClickHandler}
           type="button"
           aria-label="Featured Events | Slide right"
+          ref={rightArrowRef}
         >
-          <ChevronRightRoundedIcon />
+          <ChevronRightRoundedIcon css={featuredArrowIconCss} />
         </button>
       </div>
       <div css={dotsContainerCss} ref={dotsContainerRef}>
