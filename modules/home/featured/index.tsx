@@ -34,21 +34,16 @@ export default function HomeFeaturedSection() {
     };
     return <div css={dotCss} key={"featured-card-dot-" + index} onClick={dotClickHandler}></div>;
   };
-  const leftClickHandler = () => {
-    const cardWidth = getSingleCardWidth();
-    const currentScrollVal = cardsContainerRef.current?.scrollLeft ?? 0;
-    cardsContainerRef.current?.scroll({
-      left: currentScrollVal - cardWidth,
-      behavior: "smooth"
-    });
-  };
-  const rightClickHandler = () => {
-    const cardWidth = getSingleCardWidth();
-    const currentScrollVal = cardsContainerRef.current?.scrollLeft ?? 0;
-    cardsContainerRef.current?.scroll({
-      left: currentScrollVal + cardWidth,
-      behavior: "smooth"
-    });
+  const clickHandler = (direction: "left" | "right") => {
+    const mainFunc = () => {
+      const cardWidth = getSingleCardWidth();
+      const currentScrollVal = cardsContainerRef.current?.scrollLeft ?? 0;
+      cardsContainerRef.current?.scroll({
+        left: direction === "left" ? currentScrollVal - cardWidth : currentScrollVal + cardWidth,
+        behavior: "smooth"
+      });
+    };
+    return mainFunc;
   };
   useEffect(() => {
     const cardsContainer = cardsContainerRef.current;
@@ -87,7 +82,7 @@ export default function HomeFeaturedSection() {
       <div css={featuredCardsWrapperCss}>
         <button
           css={featuredNavButtonsCss}
-          onClick={leftClickHandler}
+          onClick={clickHandler("left")}
           type="button"
           aria-label="Featured Events | Slide left"
           ref={leftArrowRef}
@@ -162,7 +157,7 @@ export default function HomeFeaturedSection() {
         </div>
         <button
           css={featuredNavButtonsCss}
-          onClick={rightClickHandler}
+          onClick={clickHandler("right")}
           type="button"
           aria-label="Featured Events | Slide right"
           ref={rightArrowRef}

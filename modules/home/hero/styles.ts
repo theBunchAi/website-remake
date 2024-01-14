@@ -1,5 +1,5 @@
-import { mediaQuery } from "@common-styles";
 import { css } from "@emotion/react";
+import { mediaQuery } from "@common-styles";
 
 export const heroWrapperCss = css`
   height: calc(90vh - var(--header-height));
@@ -8,6 +8,9 @@ export const heroWrapperCss = css`
   border-radius: 0 0 3rem 3rem;
   overflow: hidden;
   background-color: var(--color-secondary-highlight);
+  ${mediaQuery.mobile} {
+    height: calc(75vh - var(--header-height));
+  }
 `;
 
 export const heroVideoCss = css`
