@@ -6,6 +6,7 @@ export interface FullWidthWrapperProps extends PropsWithChildren {
   className?: string;
   element?: "div" | "section" | "article" | "main" | "header" | "footer";
   secondContainer?: ReactNode;
-  containerCss?: SerializedStyles;
+  wrapperCss?: SerializedStyles;
+  wrapperClassName?: string;
   isContainerCenter?: boolean;
 }

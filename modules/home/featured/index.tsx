@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import dynamic from "next/dynamic";
+import { RightIcon, LeftIcon } from "@components/dynamic-imports";
 import FeaturedEventCard from "@components/featured-event-card";
 import FullWidthWrapper from "@components/full-width-wrapper";
 import {
@@ -13,14 +13,6 @@ import {
   homeFeaturedContainerCss,
   homeFeaturedHeadingCss
 } from "@modules/home/featured/styles";
-const ChevronLeftRoundedIcon = dynamic(() => import("@mui/icons-material/ChevronLeftRounded"), {
-  ssr: false,
-  loading: () => <>{"<"}</>
-});
-const ChevronRightRoundedIcon = dynamic(() => import("@mui/icons-material/ChevronRightRounded"), {
-  ssr: false,
-  loading: () => <>{">"}</>
-});
 
 export default function HomeFeaturedSection() {
   const cardsContainerRef = useRef<HTMLDivElement>(null);
@@ -81,6 +73,7 @@ export default function HomeFeaturedSection() {
           const allDots = Array.from(dotsContainer?.children ?? []) as HTMLDivElement[];
           allDots.forEach((dot) => dot.classList.remove("active"));
           allDots[index]?.classList?.add("active");
+          break;
         }
       }
     };
@@ -89,7 +82,7 @@ export default function HomeFeaturedSection() {
     return () => observer.disconnect();
   }, []);
   return (
-    <FullWidthWrapper element="section" containerCss={homeFeaturedContainerCss}>
+    <FullWidthWrapper element="section" css={homeFeaturedContainerCss}>
       <h2 css={homeFeaturedHeadingCss}>Featured Events</h2>
       <div css={featuredCardsWrapperCss}>
         <button
@@ -99,7 +92,7 @@ export default function HomeFeaturedSection() {
           aria-label="Featured Events | Slide left"
           ref={leftArrowRef}
         >
-          <ChevronLeftRoundedIcon css={featuredArrowIconCss} />
+          <RightIcon css={featuredArrowIconCss} />
         </button>
         <div css={featuredCardsContainerCss} ref={cardsContainerRef}>
           <FeaturedEventCard
@@ -174,7 +167,7 @@ export default function HomeFeaturedSection() {
           aria-label="Featured Events | Slide right"
           ref={rightArrowRef}
         >
-          <ChevronRightRoundedIcon css={featuredArrowIconCss} />
+          <LeftIcon css={featuredArrowIconCss} />
         </button>
       </div>
       <div css={dotsContainerCss} ref={dotsContainerRef}>

@@ -54,9 +54,9 @@ export default function Footer() {
   return (
     <FullWidthWrapper
       element="footer"
-      css={footerWrapperCss}
+      wrapperCss={footerWrapperCss}
       secondContainer={lowerJsx}
-      containerCss={footerUpperWrapperCss}
+      css={footerUpperWrapperCss}
     >
       <span css={mainTopTextCss}>{footerTopText}</span>
       <nav css={mainNavWrapperCss}>{nav.map(navMapper)}</nav>

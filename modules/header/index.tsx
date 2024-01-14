@@ -26,9 +26,9 @@ export default function Header() {
   return (
     <FullWidthWrapper
       element="header"
-      css={headerWrapperCss}
+      wrapperCss={headerWrapperCss}
       secondContainer={<Nav ref={navRef} />}
-      containerCss={headerContainerCss}
+      css={headerContainerCss}
     >
       <div className="logo" css={logoContainerCss}>
         <span>{leftText}</span>

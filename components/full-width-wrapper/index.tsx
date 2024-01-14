@@ -6,50 +6,63 @@ export default function FullWidthWrapper({
   children,
   element = "div",
   secondContainer,
-  containerCss,
+  wrapperClassName,
+  wrapperCss,
   isContainerCenter = true
 }: FullWidthWrapperProps) {
   switch (element) {
     case "div":
     default:
       return (
-        <div className={className} css={fullWidthWrapperCss(isContainerCenter)}>
-          <div css={[fullWidthContainerCss, containerCss]}>{children}</div>
+        <div className={wrapperClassName} css={[fullWidthWrapperCss(isContainerCenter), wrapperCss]}>
+          <div css={[fullWidthContainerCss]} className={className}>
+            {children}
+          </div>
           {secondContainer}
         </div>
       );
     case "section":
       return (
-        <section className={className} css={fullWidthWrapperCss(isContainerCenter)}>
-          <div css={[fullWidthContainerCss, containerCss]}>{children}</div>
+        <section className={wrapperClassName} css={[fullWidthWrapperCss(isContainerCenter), wrapperCss]}>
+          <div css={[fullWidthContainerCss]} className={className}>
+            {children}
+          </div>
           {secondContainer}
         </section>
       );
     case "article":
       return (
-        <article className={className} css={fullWidthWrapperCss(isContainerCenter)}>
-          <div css={[fullWidthContainerCss, containerCss]}>{children}</div>
+        <article className={wrapperClassName} css={[fullWidthWrapperCss(isContainerCenter), wrapperCss]}>
+          <div css={[fullWidthContainerCss]} className={className}>
+            {children}
+          </div>
           {secondContainer}
         </article>
       );
     case "main":
       return (
-        <main className={className} css={fullWidthWrapperCss(isContainerCenter)}>
-          <div css={[fullWidthContainerCss, containerCss]}>{children}</div>
+        <main className={wrapperClassName} css={[fullWidthWrapperCss(isContainerCenter), wrapperCss]}>
+          <div css={[fullWidthContainerCss]} className={className}>
+            {children}
+          </div>
           {secondContainer}
         </main>
       );
     case "header":
       return (
-        <header className={className} css={fullWidthWrapperCss(isContainerCenter)}>
-          <div css={[fullWidthContainerCss, containerCss]}>{children}</div>
+        <header className={wrapperClassName} css={[fullWidthWrapperCss(isContainerCenter), wrapperCss]}>
+          <div css={[fullWidthContainerCss]} className={className}>
+            {children}
+          </div>
           {secondContainer}
         </header>
       );
     case "footer":
       return (
-        <footer className={className} css={fullWidthWrapperCss(isContainerCenter)}>
-          <div css={[fullWidthContainerCss, containerCss]}>{children}</div>
+        <footer className={wrapperClassName} css={[fullWidthWrapperCss(isContainerCenter), wrapperCss]}>
+          <div css={[fullWidthContainerCss]} className={className}>
+            {children}
+          </div>
           {secondContainer}
         </footer>
       );
