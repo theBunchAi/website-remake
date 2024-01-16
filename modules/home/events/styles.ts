@@ -9,6 +9,14 @@ export const homeEventSectionWrapper = css`
   }
   ${mediaQuery.mobile} {
     flex-direction: column;
-    gap: 2.5vh;
+    gap: 7.5vh;
+  }
+`;
+
+export const homeEventSectionOuterWrapperCss = css`
+  ${mediaQuery.mobile} {
+    & > * {
+      width: 100%;
+    }
   }
 `;

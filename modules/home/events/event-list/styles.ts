@@ -6,6 +6,10 @@ export const eventsWrapperCss = css`
   flex-direction: column;
   gap: 3.75vh;
   height: fit-content;
+  ${mediaQuery.mobile} {
+    width: 90%;
+    margin: 0 auto;
+  }
 `;
 
 export const eventsHeadingContainerCss = css`
