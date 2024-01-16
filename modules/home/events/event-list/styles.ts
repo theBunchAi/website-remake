@@ -56,7 +56,7 @@ export const eventsListContainerCss = css`
     aspect-ratio: 4 / 1;
   }
   ${mediaQuery.mobile} {
-    padding: 0 0.25rem;
+    padding: 0.75rem;
     & > * {
       aspect-ratio: 2 / 1;
     }
