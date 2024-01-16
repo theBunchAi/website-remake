@@ -41,8 +41,10 @@ export const projectCardTitleCss = css`
   text-shadow: 0 0 5px var(--color-black);
   font-size: clamp(15px, 2vw, 24px);
   ${mediaQuery.mobile} {
-    font-size: 1.65em;
-    margin-bottom: 0.25em;
+    font-size: 24px;
+    text-align: center;
+    width: 100%;
+    margin: 0em auto 0.5em auto;
   }
 `;
 
@@ -54,8 +56,9 @@ export const projectCardDescriptionCss = css`
   font-size: 1em;
   font-size: clamp(10px, 1.15vw, 1em);
   ${mediaQuery.mobile} {
-    font-size: 0.85em;
+    font-size: 1rem;
     margin-bottom: 2em;
+    text-shadow: 0 0 0.5em var(--color-black);
   }
 `;
 
@@ -69,6 +72,7 @@ export const projectCardLinkCss = css`
   border-radius: 2rem;
   margin-top: 1em;
   ${mediaQuery.mobile} {
-    font-size: 0.85em;
+    font-size: 1rem;
+    margin: 0.5em auto 0 auto;
   }
 `;
