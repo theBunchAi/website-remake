@@ -6,8 +6,8 @@ export const projectListWrapperCss = css`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding-top: calc(1.875rem + 3.75vh);
-  padding-bottom: calc(20px + 3.75vh);
+  padding-top: calc(1.875rem + 3.75vh + 1rem);
+  padding-bottom: calc(20px + 3.75vh + 1rem);
   ${mediaQuery.mobile} {
     height: fit-content;
     padding-top: 0;

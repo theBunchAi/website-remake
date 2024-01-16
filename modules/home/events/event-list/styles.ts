@@ -51,7 +51,7 @@ export const eventsListContainerCss = css`
   flex-direction: column;
   gap: 2.5vh;
   transition: all 0.5s ease-in-out;
-  padding: 0 1rem;
+  padding: 1rem;
   & > * {
     aspect-ratio: 4 / 1;
   }

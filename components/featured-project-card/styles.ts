@@ -16,6 +16,7 @@ export const projectCardWrapperCss = css`
   padding: 5%;
   aspect-ratio: 2.7755;
   font-size: 1rem;
+  box-shadow: var(--common-shadow);
   & > *:not(img) {
     z-index: 1;
   }
@@ -27,6 +28,7 @@ export const projectCardWrapperCss = css`
     border-radius: 0;
     font-size: 0.85rem;
     padding: 10% 5%;
+    box-shadow: none;
   }
 `;
 

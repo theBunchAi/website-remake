@@ -7,6 +7,7 @@ export const headerWrapperCss = css`
   color: var(--color-white);
   z-index: 999;
   position: fixed;
+  box-shadow: 0 0 15px var(--color-black);
 `;
 
 export const headerContainerCss = css`

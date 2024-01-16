@@ -2,7 +2,11 @@ import { css } from "@emotion/react";
 import { mediaQuery } from "@common-styles";
 
 export const eventCardLinkCss = css`
+  overflow: hidden;
   text-decoration: none;
+  border-radius: var(--common-border-radius);
+  background-color: var(--color-grey);
+  box-shadow: var(--common-shadow);
 `;
 
 export const eventCardArticleCss = css`
@@ -10,10 +14,6 @@ export const eventCardArticleCss = css`
   align-items: center;
   height: 100%;
   width: 100%;
-  border-radius: var(--common-border-radius);
-  background-color: var(--color-grey);
-  box-shadow: 0 0 0.5rem var(--color-grey);
-  overflow: hidden;
 `;
 
 export const eventCardPictureContainerCss = css`

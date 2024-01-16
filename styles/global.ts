@@ -21,15 +21,16 @@ export const globalStyles = css`
     --color-dark-gray: var(--color-dark-grey);
     --color-xDark-grey: #686868;
     --color-xDark-gray: var(--color-xDark-grey);
+    --color-shadow: rgba(0, 0, 0, 0.25);
 
     --max-content-width: 1400px;
     --common-border-radius: 8px;
+    --header-height: 7.5vh;
+    --common-section-gap: 7.5vh;
+    --common-shadow: 0 0 15px var(--color-shadow);
 
     --font-primary: "DM Sans", sans-serif;
     --font-heading: "Outfit", sans-serif;
-
-    --header-height: 7.5vh;
-    --common-section-gap: 7.5vh;
   }
   * {
     box-sizing: border-box;
