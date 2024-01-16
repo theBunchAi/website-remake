@@ -5,6 +5,7 @@ export const homeFeaturedContainerCss = css`
   display: flex;
   flex-direction: column;
   gap: 2.5vh;
+  margin-bottom: var(--common-section-gap);
 `;
 
 export const homeFeaturedHeadingCss = css`

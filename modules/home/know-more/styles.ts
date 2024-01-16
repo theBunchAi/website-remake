@@ -1,3 +1,4 @@
+import { mediaQuery } from "@common-styles";
 import { css } from "@emotion/react";
 
 export const knowMoreOuterWrapperCss = css`
@@ -27,5 +28,14 @@ export const knowMoreWrapperCss = css`
     text-decoration: none;
     font-weight: 500;
     border-bottom: 2px solid currentColor;
+  }
+  ${mediaQuery.mobile} {
+    padding: 10% 0;
+    & > * {
+      max-width: unset;
+    }
+    .para {
+      text-align: left;
+    }
   }
 `;

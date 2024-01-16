@@ -29,6 +29,7 @@ export const globalStyles = css`
     --font-heading: "Outfit", sans-serif;
 
     --header-height: 7.5vh;
+    --common-section-gap: 7.5vh;
   }
   * {
     box-sizing: border-box;

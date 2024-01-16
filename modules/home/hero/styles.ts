@@ -11,6 +11,7 @@ export const heroWrapperCss = css`
   ${mediaQuery.mobile} {
     height: calc(75vh - var(--header-height));
   }
+  margin-bottom: var(--common-section-gap);
 `;
 
 export const heroVideoCss = css`

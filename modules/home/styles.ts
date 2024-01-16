@@ -5,5 +5,4 @@ export const homeWrapperCss = css`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 7.5vh;
 `;
