@@ -8,7 +8,7 @@ export const globalStyles = css`
   @import url(${fontUrl});
   :root {
     --color-primary-highlight: #1804b4;
-    --color-primary-neutral: #e8ecfa;
+    --color-primary-neutral: #d9e0ff;
 
     --color-secondary-highlight: #512f16;
     --color-secondary-neutral: #f5e4d7;

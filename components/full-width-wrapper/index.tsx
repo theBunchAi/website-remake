@@ -4,7 +4,7 @@ import { FullWidthWrapperProps } from "@components/full-width-wrapper/types";
 export default function FullWidthWrapper({
   className,
   children,
-  element = "div",
+  element = "section",
   secondContainer,
   wrapperClassName,
   wrapperCss,

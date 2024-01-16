@@ -77,7 +77,7 @@ export default function HomeFeaturedSection() {
     return () => observer.disconnect();
   }, []);
   return (
-    <FullWidthWrapper element="section" css={homeFeaturedContainerCss}>
+    <FullWidthWrapper css={homeFeaturedContainerCss}>
       <h2 css={homeFeaturedHeadingCss}>Featured Events</h2>
       <div css={featuredCardsWrapperCss}>
         <button

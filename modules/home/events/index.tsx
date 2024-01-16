@@ -5,7 +5,7 @@ import { homeEventSectionOuterWrapperCss, homeEventSectionWrapper } from "@modul
 
 export default function HomeEventsSection() {
   return (
-    <FullWidthWrapper element="section" css={homeEventSectionWrapper} wrapperCss={homeEventSectionOuterWrapperCss}>
+    <FullWidthWrapper css={homeEventSectionWrapper} wrapperCss={homeEventSectionOuterWrapperCss}>
       <HomeEventList />
       <HomeProjectList />
     </FullWidthWrapper>
