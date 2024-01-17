@@ -4,7 +4,7 @@ import { knowMoreOuterWrapperCss, knowMoreWrapperCss } from "@modules/home/know-
 
 export default function HomeKnowMoreSection() {
   return (
-    <FullWidthWrapper wrapperCss={knowMoreOuterWrapperCss} css={knowMoreWrapperCss}>
+    <FullWidthWrapper element="main" wrapperCss={knowMoreOuterWrapperCss} css={knowMoreWrapperCss}>
       <h2 className="heading">About TheBunch.ai</h2>
       <p className="para">
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis incidunt dicta fuga, temporibus unde odio
