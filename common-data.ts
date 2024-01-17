@@ -104,8 +104,8 @@ export const footerContent = {
     links: [
       {
         dummyText: "<DESIGNER>",
-        actualText: "A good lady",
-        link: "https://www.instagram.com/thebunch.ai/"
+        actualText: "Anjali Joshy",
+        link: "https://www.linkedin.com/in/anjalijoshy/"
       },
       {
         dummyText: "<DEVELOPER>",
@@ -115,4 +115,15 @@ export const footerContent = {
     ]
   },
   bottomText: "2023 TheBunch.ai | All rights reserved"
+};
+
+export const meta = {
+  home: {
+    title: "TheBunch.ai | Home",
+    description: "Home page of the app",
+    og: {
+      title: "TheBunch.ai | Home",
+      description: "Home page of the app"
+    }
+  }
 };

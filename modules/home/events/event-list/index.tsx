@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import EventCard from "@components/event-card";
 import {
@@ -13,6 +13,7 @@ import {
 export default function HomeEventList() {
   const upcomingHeadingRef = useRef<HTMLHeadingElement>(null);
   const pastHeadingRef = useRef<HTMLHeadingElement>(null);
+  const listWrapperRef = useRef<HTMLDivElement>(null);
   const upcomingEventContainerRef = useRef<HTMLDivElement>(null);
   const pastEventContainerRef = useRef<HTMLDivElement>(null);
   const upcomingLinkRef = useRef<HTMLAnchorElement>(null);
@@ -33,6 +34,41 @@ export default function HomeEventList() {
     upcomingLinkRef.current?.classList.remove("active");
     pastLinkRef.current?.classList.add("active");
   };
+  useEffect(() => {
+    const listWrapper = listWrapperRef.current;
+    if (listWrapper) {
+      let touchstartX = 0;
+      let touchendX = 0;
+      const threshold = 100;
+
+      const checkDirection = () => {
+        // if (touchendX < touchstartX) {
+        if (touchendX + threshold < touchstartX) {
+          pastHeadingClickHandler();
+        }
+        // if (touchendX > touchstartX) {
+        if (touchendX > touchstartX + threshold) {
+          upcomingHeadingClickHandler();
+        }
+      };
+      const touchStartHandler = (e: TouchEvent) => {
+        touchstartX = e.changedTouches[0]?.screenX ?? 0;
+      };
+      const touchEndHandler = (e: TouchEvent) => {
+        touchendX = e.changedTouches[0]?.screenX ?? 0;
+        checkDirection();
+      };
+
+      listWrapper.addEventListener("touchstart", touchStartHandler, { passive: true });
+
+      listWrapper.addEventListener("touchend", touchEndHandler, { passive: true });
+      return () => {
+        listWrapper.removeEventListener("touchstart", touchStartHandler);
+        listWrapper.removeEventListener("touchend", touchEndHandler);
+      };
+    }
+    return;
+  }, []);
   return (
     <div css={eventsWrapperCss}>
       <div css={eventsHeadingContainerCss}>
@@ -43,7 +79,7 @@ export default function HomeEventList() {
           <span>Past</span> Events
         </h2>
       </div>
-      <div css={eventsListsWrapperCss}>
+      <div css={eventsListsWrapperCss} ref={listWrapperRef}>
         <div css={eventsListContainerCss} ref={upcomingEventContainerRef}>
           <EventCard
             date={new Date()}
