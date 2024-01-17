@@ -9,14 +9,15 @@ import { homeWrapperCss } from "@modules/home/styles";
 const HomeHead = () => {
   const { home: homeMeta } = meta;
   const { title, description, og } = homeMeta;
+  const mapper = (ogKey: string, index: number) => {
+    const value = og[ogKey as keyof typeof og];
+    return <meta key={"og-meta-home-" + index} property={`og:${ogKey}`} content={value} />;
+  };
   return (
     <Head>
       <title>{title}</title>
       <meta name="description" content={description} />
-      {Object.keys(og).map((ogKey: string, index: number) => {
-        const value = og[ogKey as keyof typeof og];
-        return <meta key={"og-meta-home-" + index} property={`og:${ogKey}`} content={value} />;
-      })}
+      {Object.keys(og).map(mapper)}
     </Head>
   );
 };

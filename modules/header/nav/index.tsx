@@ -3,14 +3,23 @@ import Link from "next/link";
 import { navBarContent } from "@common-data";
 import { mainNavCss, navContainerCss, navWrapperCss } from "@modules/header/nav/styles";
 
-function N(_: unknown, ref: Ref<HTMLDivElement>) {
+function N(
+  {
+    clickHandler
+  }: {
+    clickHandler: (e?: unknown) => void;
+  },
+  ref: Ref<HTMLDivElement>
+) {
   const { nav } = navBarContent;
   const { links } = nav;
   const navLinkMapper = (slink: (typeof links)[0], index: number) => {
     const { text, link } = slink;
     return (
       <Fragment key={"main-nav-link-" + index}>
-        <Link href={link}>{text}</Link>
+        <Link href={link} onClick={clickHandler}>
+          {text}
+        </Link>
       </Fragment>
     );
   };

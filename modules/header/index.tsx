@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import Link from "next/link";
 import { navBarContent } from "@common-data";
 import FullWidthWrapper from "@components/full-width-wrapper";
 import Nav from "@modules/header/nav";
@@ -23,16 +24,24 @@ export default function Header() {
       targetTwo.classList.toggle("active");
     }
   };
+  const logoClickHandler = () => {
+    const targetOne = hamRef.current;
+    const targetTwo = navRef.current;
+    if (targetOne && targetTwo) {
+      targetOne.classList.remove("active");
+      targetTwo.classList.remove("active");
+    }
+  };
   return (
     <FullWidthWrapper
       element="header"
       wrapperCss={headerWrapperCss}
-      secondContainer={<Nav ref={navRef} />}
+      secondContainer={<Nav ref={navRef} clickHandler={hamClickHandler} />}
       css={headerContainerCss}
     >
-      <div className="logo" css={logoContainerCss}>
+      <Link href={"/"} className="logo" css={logoContainerCss} onClick={logoClickHandler}>
         <span>{leftText}</span>
-      </div>
+      </Link>
       <div className="other-content" css={otherContentCss}>
         <div className="location-container" css={locationContainerCss}>
           <span>{locationText}</span>

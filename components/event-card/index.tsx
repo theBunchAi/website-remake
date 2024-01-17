@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import moment from "moment";
 import { companyName } from "@common-data";
 import { LocationOnIcon } from "@components/dynamic-imports";
 import {
@@ -14,11 +15,12 @@ import { EventCardProps } from "@components/event-card/types";
 
 export default function EventCard(props: EventCardProps) {
   const { date, imgSrc, title, imgAlt, className, isHiglihgted = true, description, location, link } = props;
+  const dateMoment = moment(date);
   const time = {
-    day: date.getDate(),
-    month: date.toLocaleString("default", { month: "short" }),
-    year: date.getFullYear(),
-    twelveHourTime: date.toLocaleString("default", { hour: "numeric", minute: "numeric", hour12: true }).toUpperCase()
+    day: dateMoment.format("DD"),
+    month: dateMoment.format("MMM"),
+    year: dateMoment.format("YYYY"),
+    twelveHourTime: dateMoment.format("hh:mm A")
   };
   return (
     <Link href={link} className={className} css={eventCardLinkCss}>
