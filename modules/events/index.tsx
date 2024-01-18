@@ -30,16 +30,20 @@ export default function EventsModule() {
   const upcomingHeadingClickHandler = () => {
     (eventListWrapperRef?.current?.firstChild as HTMLDivElement)?.classList.remove("inactive");
     (headingContainerRef?.current?.firstChild as HTMLHeadingElement)?.classList.add("active");
-    (headingContainerRef?.current?.lastChild as HTMLHeadingElement)?.classList.remove("active");
-    (eventListWrapperRef?.current?.lastChild as HTMLDivElement)?.classList.add("inactive");
     eventListWrapperRef.current?.scroll({ behavior: "smooth", left: 0 });
+    setTimeout(() => {
+      (headingContainerRef?.current?.lastChild as HTMLHeadingElement)?.classList.remove("active");
+      (eventListWrapperRef?.current?.lastChild as HTMLDivElement)?.classList.add("inactive");
+    }, 300);
   };
   const pastHeadingClickHandler = () => {
     (eventListWrapperRef?.current?.lastChild as HTMLDivElement)?.classList.remove("inactive");
     (headingContainerRef?.current?.firstChild as HTMLHeadingElement)?.classList.remove("active");
-    (headingContainerRef?.current?.lastChild as HTMLHeadingElement)?.classList.add("active");
-    (eventListWrapperRef?.current?.firstChild as HTMLDivElement)?.classList.add("inactive");
     eventListWrapperRef.current?.scroll({ behavior: "smooth", left: eventListWrapperRef.current?.scrollWidth });
+    setTimeout(() => {
+      (headingContainerRef?.current?.lastChild as HTMLHeadingElement)?.classList.add("active");
+      (eventListWrapperRef?.current?.firstChild as HTMLDivElement)?.classList.add("inactive");
+    }, 300);
   };
   useSwipe({
     element: eventListWrapperRef,
