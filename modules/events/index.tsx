@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { companyName } from "@common-data";
-import CustomHead from "@components/custom-head";
 import EventCard from "@components/event-card";
 import FullWidthWrapper from "@components/full-width-wrapper";
 import useSwipe from "@hooks/use-swipe";
@@ -69,7 +68,6 @@ export default function EventsModule(props: EventPageProps) {
 
   return (
     <FullWidthWrapper css={eventsPageContainer}>
-      <CustomHead page="events" />
       <div css={headingsContainer} ref={headingContainerRef}>
         <h2 onClick={upcomingHeadingClickHandler} className="active">
           Upcoming Events

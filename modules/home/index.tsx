@@ -1,4 +1,3 @@
-import CustomHead from "@components/custom-head";
 import HomeEventsSection from "@modules/home/events";
 import HomeFeaturedSection from "@modules/home/featured";
 import HomeHeroSection from "@modules/home/hero";
@@ -10,7 +9,6 @@ export default function Home(props: HomeModuleProps) {
   const { heroProps, aboutDocument, featuredEvents, upcomingEvents, pastEvents, projects } = props;
   return (
     <div css={homeWrapperCss}>
-      <CustomHead page="home" />
       <HomeHeroSection {...heroProps} />
       <HomeFeaturedSection featuredEvents={featuredEvents} />
       <HomeEventsSection upcomingEvents={upcomingEvents} pastEvents={pastEvents} projects={projects} />

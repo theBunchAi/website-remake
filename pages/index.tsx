@@ -1,6 +1,7 @@
 import type { GetStaticProps } from "next";
 import gqlClient from "@/gql/client";
 import { gqlHomeData } from "@/gql/queries";
+import PageWrapper from "@components/page-wrapper";
 import Home from "@modules/home";
 import type { HomeContent, HomePageProps } from "@modules/home/types";
 
@@ -14,7 +15,7 @@ export default function HomePage(props: HomePageProps) {
     posterUrl: homeVideoPoster?.url
   };
   return (
-    <div className="page-wrapper">
+    <PageWrapper name="home">
       <Home
         heroProps={heroProps}
         aboutDocument={homeAboutText?.json}
@@ -23,7 +24,7 @@ export default function HomePage(props: HomePageProps) {
         pastEvents={pastEvents}
         projects={projects}
       />
-    </div>
+    </PageWrapper>
   );
 }
 
