@@ -117,7 +117,16 @@ export const footerContent = {
   bottomText: "2023 TheBunch.ai | All rights reserved"
 };
 
-export const meta = {
+export const meta: {
+  [key: string]: {
+    title: string;
+    description: string;
+    og: {
+      title: string;
+      description: string;
+    };
+  };
+} = {
   home: {
     title: "TheBunch.ai | Home",
     description: "Home page of the app",

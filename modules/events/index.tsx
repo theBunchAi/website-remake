@@ -1,29 +1,13 @@
 import { useEffect, useRef } from "react";
-import Head from "next/head";
 import { useRouter } from "next/router";
-import { companyName, meta } from "@common-data";
+import { companyName } from "@common-data";
+import CustomHead from "@components/custom-head";
 import EventCard from "@components/event-card";
 import FullWidthWrapper from "@components/full-width-wrapper";
 import useSwipe from "@hooks/use-swipe";
 import { CommonEventItem } from "@modules/common/types";
 import { eventListContainer, eventListWrapper, eventsPageContainer, headingsContainer } from "@modules/events/styles";
 import { EventPageProps } from "@modules/events/types";
-
-const EventsHead = () => {
-  const { events: eventsMeta } = meta;
-  const { title, description, og } = eventsMeta;
-  const mapper = (ogKey: string, index: number) => {
-    const value = og[ogKey as keyof typeof og];
-    return <meta key={"og-meta-events-" + index} property={`og:${ogKey}`} content={value} />;
-  };
-  return (
-    <Head>
-      <title>{title}</title>
-      <meta name="description" content={description} />
-      {Object.keys(og).map(mapper)}
-    </Head>
-  );
-};
 
 export default function EventsModule(props: EventPageProps) {
   const { upcomingEvents = [], pastEvents = [] } = props;
@@ -85,7 +69,7 @@ export default function EventsModule(props: EventPageProps) {
 
   return (
     <FullWidthWrapper css={eventsPageContainer}>
-      <EventsHead />
+      <CustomHead page="events" />
       <div css={headingsContainer} ref={headingContainerRef}>
         <h2 onClick={upcomingHeadingClickHandler} className="active">
           Upcoming Events
