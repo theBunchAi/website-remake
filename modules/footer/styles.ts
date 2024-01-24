@@ -54,6 +54,10 @@ export const footerLowerWrapperCss = css`
     width: 100%;
     gap: 0.75em;
     padding: 0.75em 0 2em 0;
+    & > * {
+      flex-direction: column;
+      min-height: 48px;
+    }
     .attribute-container {
       min-height: 48px;
     }
