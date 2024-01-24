@@ -137,7 +137,7 @@ export const footerContent: {
       }
     }
   },
-  bottomText: "2023 TheBunch.ai | All rights reserved"
+  bottomText: "2024 TheBunch.ai | All rights reserved"
 };
 
 export const meta: {
