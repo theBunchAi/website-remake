@@ -10,22 +10,6 @@ const commonHomeEventFields = `
     }
 `;
 
-const commonHomeAndEventPageEvents = (limit: number) => `
-    upcomingEvents: eventInfoCollection(
-      limit: ${limit}, 
-      where: { eventDate_gte: $currentDate }, 
-      order: [eventDate_DESC]) {
-      items {
-        ${commonHomeEventFields}
-      }
-    }
-    pastEvents: eventInfoCollection(limit: ${limit}, where: { eventDate_lt: $currentDate }, order: [eventDate_DESC]) {
-      items {
-        ${commonHomeEventFields}
-      }
-    }
-`;
-
 export const gqlHomeData = gql`
   query ($currentDate: DateTime!) {
     staticData: staticContentCollection(limit: 1) {
@@ -43,7 +27,7 @@ export const gqlHomeData = gql`
         }
       }
     }
-    featuredEvents: eventInfoCollection(limit: 3, where: { featuredEvent: true }) {
+    featuredEvents: eventInfoCollection(limit: 3, where: { featuredEvent: true }, order: [eventDate_ASC]) {
         items {
             ${commonHomeEventFields}
             limitedSeats
@@ -51,8 +35,20 @@ export const gqlHomeData = gql`
             limitedSeatsBottomText
         }
     }
-    ${commonHomeAndEventPageEvents(3)}
-    projects: projectsCollection(limit: 2, order: [sys_publishedAt_DESC]){
+    upcomingEvents: eventInfoCollection(
+      limit: 3, 
+      where: { eventDate_gte: $currentDate }, 
+      order: [eventDate_ASC]) {
+      items {
+        ${commonHomeEventFields}
+      }
+    }
+    pastEvents: eventInfoCollection(limit: 3, where: { eventDate_lt: $currentDate }, order: [eventDate_ASC]) {
+      items {
+        ${commonHomeEventFields}
+      }
+    }
+    projects: projectsCollection(limit: 2, order: [sys_publishedAt_ASC]){
         items{
             title
             titlePrefix
@@ -67,9 +63,28 @@ export const gqlHomeData = gql`
 }
 `;
 
-export const gqlEventPageData = gql`
+export const gqlUpcomingEvents = gql`
   query ($currentDate: DateTime!) {
-    ${commonHomeAndEventPageEvents(99)}
+    upcomingEvents: eventInfoCollection(
+      limit: 98, 
+      where: { eventDate_gte: $currentDate }, 
+      order: [eventDate_ASC]) {
+      items {
+        ${commonHomeEventFields}
+      }
+    }
+  }
+`;
+export const gqlPastEvents = gql`
+  query ($currentDate: DateTime!) {
+    pastEvents: eventInfoCollection(
+      limit: 98, 
+      where: { eventDate_lte: $currentDate }, 
+      order: [eventDate_ASC]) {
+      items {
+        ${commonHomeEventFields}
+      }
+    }
   }
 `;
 

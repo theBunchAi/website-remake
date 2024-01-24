@@ -41,7 +41,6 @@ export const eventsListsWrapperCss = css`
   display: flex;
   overflow-x: hidden;
   height: fit-content;
-  min-height: 34.5vw;
 `;
 
 export const eventsListContainerCss = css`

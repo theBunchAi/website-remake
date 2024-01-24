@@ -5,7 +5,9 @@ export interface EventPageProps {
   pastEvents: CommonEventItem[];
 }
 
-export interface EventContent {
+export interface UpcomingEventsContent {
   upcomingEvents: ItemsWrapper<CommonEventItem>;
+}
+export interface PastEventsContent {
   pastEvents: ItemsWrapper<CommonEventItem>;
 }

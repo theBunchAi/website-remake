@@ -1,9 +1,9 @@
 import { GetStaticProps } from "next";
 import gqlClient from "@/gql/client";
-import { gqlEventPageData } from "@/gql/queries";
+import { gqlUpcomingEvents, gqlPastEvents } from "@/gql/queries";
 import PageWrapper from "@components/page-wrapper";
 import EventsModule from "@modules/events";
-import { EventContent, EventPageProps } from "@modules/events/types";
+import { EventPageProps, UpcomingEventsContent, PastEventsContent } from "@modules/events/types";
 
 export default function EventsPage(props: EventPageProps) {
   const { upcomingEvents, pastEvents } = props;
@@ -15,13 +15,16 @@ export default function EventsPage(props: EventPageProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const eventsData = await gqlClient.request<EventContent>(gqlEventPageData, {
+  const upcomingEvents = await gqlClient.request<UpcomingEventsContent>(gqlUpcomingEvents, {
+    currentDate: new Date().toISOString()
+  });
+  const pastEvents = await gqlClient.request<PastEventsContent>(gqlPastEvents, {
     currentDate: new Date().toISOString()
   });
   return {
     props: {
-      upcomingEvents: eventsData?.upcomingEvents?.items ?? [],
-      pastEvents: eventsData?.pastEvents?.items ?? []
+      upcomingEvents: upcomingEvents?.upcomingEvents?.items ?? [],
+      pastEvents: pastEvents?.pastEvents?.items ?? []
     }
   };
 };
