@@ -30,14 +30,33 @@ export const footerLowerWrapperCss = css`
   font-size: 0.85rem;
   color: var(--color-black);
   text-align: center;
+  & > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25em;
+  }
+  .attribute-container {
+    display: flex;
+    gap: 0.2em;
+    justify-content: center;
+    align-items: center;
+  }
   & a {
     font-weight: 600;
     color: black;
     text-decoration: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
   }
   ${mediaQuery.mobile} {
     width: 100%;
     gap: 0.75em;
+    padding: 0.75em 0 2em 0;
+    .attribute-container {
+      min-height: 48px;
+    }
     .break {
       display: block;
       visibility: hidden;

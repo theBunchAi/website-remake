@@ -56,7 +56,28 @@ export const navBarContent = {
 };
 
 //footer
-export const footerContent = {
+export const footerContent: {
+  topText: string;
+  nav: {
+    text: string;
+    link: string;
+    isLong: boolean;
+  }[];
+  socials: {
+    topText: string;
+    links: typeof socialLinks;
+  };
+  attributes: {
+    text: string;
+    links: {
+      [key: string]: {
+        link: string;
+        text: string;
+      };
+    };
+  };
+  bottomText: string;
+} = {
   topText: companyName,
   nav: [
     {
@@ -101,18 +122,16 @@ export const footerContent = {
   },
   attributes: {
     text: "Designed by <DESIGNER> | Developed by <DEVELOPER>",
-    links: [
-      {
-        dummyText: "<DESIGNER>",
-        actualText: "Anjali Joshy",
-        link: "https://www.linkedin.com/in/anjalijoshy/"
+    links: {
+      "<DESIGNER>": {
+        link: "https://www.linkedin.com/in/anjalijoshy/",
+        text: "Anjali Joshy"
       },
-      {
-        dummyText: "<DEVELOPER>",
-        actualText: "Hymns Of Web",
-        link: "https://www.hymnsofweb.com"
+      "<DEVELOPER>": {
+        link: "https://www.hymnsofweb.com",
+        text: "Hymns Of Web"
       }
-    ]
+    }
   },
   bottomText: "2023 TheBunch.ai | All rights reserved"
 };

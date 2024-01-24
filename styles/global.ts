@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { mediaQuery } from "@common-styles";
 
 const fontUrl =
   // eslint-disable-next-line max-len
@@ -84,8 +85,10 @@ export const globalStyles = css`
     background: transparent;
   }
 
-  a {
-    min-height: 48px;
-    min-width: 48px;
+  ${mediaQuery.mobile} {
+    a {
+      min-height: 48px;
+      min-width: 48px;
+    }
   }
 `;

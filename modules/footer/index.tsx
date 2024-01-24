@@ -14,15 +14,23 @@ export default function Footer() {
   const { topText: footerTopText, nav, socials, attributes, bottomText } = footerContent;
   const { topText: socialsTopText, links: socialLinks } = socials;
   const { text: attributesRawText, links: attributeLinks } = attributes;
-  let attributesHtml = attributesRawText;
-  for (const attribute of attributeLinks) {
-    const { actualText, dummyText, link } = attribute;
-    attributesHtml = attributesHtml.replace(
-      dummyText,
-      `<a href="${link}" target="_blank" rel="noopener noreferrer">${actualText}</a>`
-    );
+  const attributeTextsSplit = attributesRawText.split(/\s\|\s/g);
+  for (const attrKey in attributeLinks) {
+    const attrVal = attributeLinks[attrKey] ?? ({} as never);
+    const { link = "", text = "" } = attrVal;
+    for (let i = 0; i < attributeTextsSplit.length; i++) {
+      const mainStr = attributeTextsSplit[i] ?? "";
+      attributeTextsSplit[i] = mainStr.replace(
+        attrKey,
+        `<a href="${link}" target="_blank" rel="noopener noreferrer">${text}</a>`
+      );
+    }
   }
-  attributesHtml = attributesHtml.replace(/\s\|\s/g, "<span class='break'> | </span>");
+  for (let i = 0; i < attributeTextsSplit.length; i++) {
+    const atrTxt = attributeTextsSplit[i] ?? "";
+    attributeTextsSplit[i] = `<span class='attribute-container'>${atrTxt}</span>`;
+  }
+  const attributesHtml = attributeTextsSplit.join("<span class='break'> | </span>");
   const navMapper = (item: (typeof nav)[0], index: number) => {
     const { link, text, isLong } = item;
     return (
