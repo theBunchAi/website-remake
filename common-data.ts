@@ -36,6 +36,10 @@ export const navBarContent = {
   nav: {
     links: [
       {
+        text: "Home",
+        link: "/"
+      },
+      {
         text: "All Events",
         link: "/events"
       },
