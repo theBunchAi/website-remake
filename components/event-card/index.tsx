@@ -14,7 +14,7 @@ import {
 import { EventCardProps } from "@components/event-card/types";
 
 export default function EventCard(props: EventCardProps) {
-  const { date, imgSrc, title, imgAlt, className, isHiglihgted = true, description, location, link } = props;
+  const { date, imgSrc, title, imgAlt, className, isNotHighlighted = false, description, location, link } = props;
   const dateMoment = moment(date);
   const time = {
     day: dateMoment.format("DD"),
@@ -27,7 +27,7 @@ export default function EventCard(props: EventCardProps) {
       <article css={eventCardArticleCss}>
         <div css={eventCardPictureContainerCss}>
           <Image src={imgSrc} alt={imgAlt ?? companyName + " | Event | " + title} fill sizes="100%" />
-          <div css={eventCardHighlightContainerCss} className={isHiglihgted ? "active" : "inactive"}>
+          <div css={eventCardHighlightContainerCss} className={isNotHighlighted ? "inactive" : "active"}>
             <span>{`${time.month} ${time.day} ${time.year}`}</span>
             <span>{`${time.twelveHourTime} onwards`}</span>
           </div>

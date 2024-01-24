@@ -1,7 +1,9 @@
 import { useRef } from "react";
 import Link from "next/link";
+import { companyName } from "@common-data";
 import EventCard from "@components/event-card";
 import useSwipe from "@hooks/use-swipe";
+import { CommonEventItem } from "@modules/common/types";
 import {
   eventsHeadingContainerCss,
   eventsListContainerCss,
@@ -11,7 +13,13 @@ import {
   eventsWrapperCss
 } from "@modules/home/events/event-list/styles";
 
-export default function HomeEventList() {
+interface HomeEventListProps {
+  upcomingEvents: CommonEventItem[];
+  pastEvents: CommonEventItem[];
+}
+
+export default function HomeEventList(props: HomeEventListProps) {
+  const { upcomingEvents = [], pastEvents = [] } = props;
   const upcomingHeadingRef = useRef<HTMLHeadingElement>(null);
   const pastHeadingRef = useRef<HTMLHeadingElement>(null);
   const listWrapperRef = useRef<HTMLDivElement>(null);
@@ -40,6 +48,25 @@ export default function HomeEventList() {
     onSwipeLeft: pastHeadingClickHandler,
     onSwipeRight: upcomingHeadingClickHandler
   });
+  const eventsMapper = (event: CommonEventItem, index: number) => {
+    const { eventDate, eventName, eventPoster, shortDescription, venue } = event;
+    const linkComponent = encodeURIComponent(eventName.replace(/\s/g, "-").toLowerCase());
+    const mainDate = new Date(eventDate);
+    const isEventDateInPast = mainDate < new Date();
+    return (
+      <EventCard
+        key={`home-${isEventDateInPast ? "past" : "upcoming"}-event-${index}`}
+        date={mainDate}
+        title={eventName}
+        description={shortDescription}
+        imgSrc={eventPoster?.url ?? ""}
+        imgAlt={`${companyName} | ${eventName}`}
+        link={`/events/${linkComponent}`}
+        location={venue}
+        isNotHighlighted={isEventDateInPast}
+      />
+    );
+  };
   return (
     <div css={eventsWrapperCss}>
       <div css={eventsHeadingContainerCss}>
@@ -52,59 +79,10 @@ export default function HomeEventList() {
       </div>
       <div css={eventsListsWrapperCss} ref={listWrapperRef}>
         <div css={eventsListContainerCss} ref={upcomingEventContainerRef}>
-          <EventCard
-            date={new Date()}
-            title="Gok Trek"
-            description="lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-            location="Gokarna"
-            imgSrc="https://images.pexels.com/photos/9072250/pexels-photo-9072250.jpeg"
-            link="/events/gok-trek"
-          />
-          <EventCard
-            date={new Date()}
-            title="Gok Trek"
-            description="lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            location="Gokarna"
-            imgSrc="https://images.pexels.com/photos/9072250/pexels-photo-9072250.jpeg"
-            link="/events/gok-trek"
-          />
-          <EventCard
-            date={new Date()}
-            title="Gok Trek"
-            description="lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            location="Gokarna"
-            imgSrc="https://images.pexels.com/photos/9072250/pexels-photo-9072250.jpeg"
-            link="/events/gok-trek"
-          />
+          {upcomingEvents.map(eventsMapper)}
         </div>
         <div css={eventsListContainerCss} ref={pastEventContainerRef}>
-          <EventCard
-            date={new Date()}
-            title="Gok Trek"
-            description="lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            location="Gokarna"
-            imgSrc="https://images.pexels.com/photos/9072250/pexels-photo-9072250.jpeg"
-            link="/events/gok-trek"
-            isHiglihgted={false}
-          />
-          <EventCard
-            date={new Date()}
-            title="Gok Trek"
-            description="lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            location="Gokarna"
-            imgSrc="https://images.pexels.com/photos/9072250/pexels-photo-9072250.jpeg"
-            link="/events/gok-trek"
-            isHiglihgted={false}
-          />
-          <EventCard
-            date={new Date()}
-            title="Gok Trek"
-            description="lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            location="Gokarna"
-            imgSrc="https://images.pexels.com/photos/9072250/pexels-photo-9072250.jpeg"
-            link="/events/gok-trek"
-            isHiglihgted={false}
-          />
+          {pastEvents.map(eventsMapper)}
         </div>
       </div>
       <div css={eventsViewMoreContainerCss}>

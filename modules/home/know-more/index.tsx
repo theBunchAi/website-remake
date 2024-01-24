@@ -1,17 +1,24 @@
 import Link from "next/link";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { BLOCKS, type Document } from "@contentful/rich-text-types";
 import FullWidthWrapper from "@components/full-width-wrapper";
 import { knowMoreOuterWrapperCss, knowMoreWrapperCss } from "@modules/home/know-more/styles";
-
-export default function HomeKnowMoreSection() {
+interface HomeKnowMoreSectionProps {
+  text: Document;
+}
+export default function HomeKnowMoreSection(props: HomeKnowMoreSectionProps) {
+  const { text } = props;
+  const html = documentToReactComponents(text, {
+    renderNode: {
+      [BLOCKS.PARAGRAPH]: (_, children) => {
+        return <p className="para">{children}</p>;
+      }
+    }
+  });
   return (
     <FullWidthWrapper element="main" wrapperCss={knowMoreOuterWrapperCss} css={knowMoreWrapperCss}>
       <h2 className="heading">About TheBunch.ai</h2>
-      <p className="para">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis incidunt dicta fuga, temporibus unde odio
-        corrupti reiciendis consequuntur voluptatibus modi iste natus nemo voluptatum, consequatur, accusantium placeat
-        maiores eaque fugit est laboriosam vel vero optio! Nisi minima, ratione aperiam saepe fuga expedita maiores
-        doloremque, quae tempora culpa voluptate quos autem!
-      </p>
+      {html}
       <Link href="/about" className="link">
         Know More
       </Link>

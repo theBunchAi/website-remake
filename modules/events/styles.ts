@@ -25,6 +25,10 @@ export const eventListWrapper = css`
   width: 100%;
   height: fit-content;
   overflow-x: hidden;
+  min-height: 32.5vh;
+  ${mediaQuery.mobile} {
+    min-height: 35vh;
+  }
 `;
 
 export const eventListContainer = css`

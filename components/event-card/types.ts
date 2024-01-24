@@ -3,7 +3,7 @@ export interface EventCardProps {
   imgSrc: string;
   imgAlt?: string;
   className?: string;
-  isHiglihgted?: boolean;
+  isNotHighlighted?: boolean;
   title: string;
   description: string;
   location: string;

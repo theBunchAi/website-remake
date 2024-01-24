@@ -11,13 +11,14 @@ import {
 import { FeaturedProjectCardProps } from "@components/featured-project-card/types";
 
 export default function FeaturedProjectCard(props: FeaturedProjectCardProps) {
-  const { imgSrc, imgAlt, title, description, linkUrl, linkText } = props;
+  const { imgSrc, imgAlt, title, description, linkUrl, linkText, titlePrefix, titleSuffix } = props;
+  const fullTitle = `${titlePrefix || ""} ${title} ${titleSuffix || ""}`.trim();
   return (
     <article css={projectCardWrapperCss}>
       {imgSrc && (
         <Image css={projectCardImgCss} src={imgSrc} alt={imgAlt ?? `${companyName} | ${title}`} fill sizes="100%" />
       )}
-      <h2 css={projectCardTitleCss}>{title}</h2>
+      <h2 css={projectCardTitleCss}>{fullTitle}</h2>
       <p css={projectCardDescriptionCss}>{description}</p>
       <Link href={linkUrl} css={projectCardLinkCss}>
         {linkText}

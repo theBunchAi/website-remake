@@ -5,4 +5,6 @@ export interface FeaturedProjectCardProps {
   description: string;
   linkUrl: string;
   linkText: string;
+  titlePrefix: string | null;
+  titleSuffix: string | null;
 }

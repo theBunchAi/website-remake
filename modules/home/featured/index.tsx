@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { companyName } from "@common-data";
 import { RightIcon, LeftIcon } from "@components/dynamic-imports";
 import FeaturedEventCard from "@components/featured-event-card";
 import FullWidthWrapper from "@components/full-width-wrapper";
@@ -13,8 +14,10 @@ import {
   homeFeaturedContainerCss,
   homeFeaturedHeadingCss
 } from "@modules/home/featured/styles";
+import { HomeModuleProps } from "@modules/home/types";
 
-export default function HomeFeaturedSection() {
+export default function HomeFeaturedSection(props: Pick<HomeModuleProps, "featuredEvents">) {
+  const { featuredEvents } = props;
   const cardsContainerRef = useRef<HTMLDivElement>(null);
   const dotsContainerRef = useRef<HTMLDivElement>(null);
   const leftArrowRef = useRef<HTMLButtonElement>(null);
@@ -76,6 +79,42 @@ export default function HomeFeaturedSection() {
     allCards.forEach((card) => observer.observe(card));
     return () => observer.disconnect();
   }, []);
+  const eventMapper = (event: (typeof featuredEvents)[0], index: number) => {
+    const {
+      eventDate,
+      eventName,
+      eventPoster,
+      limitedSeats,
+      limitedSeatsBottomText,
+      limitedSeatsTopText,
+      shortDescription,
+      venue
+    } = event;
+    const mainDate = new Date(eventDate);
+    const limitedSeatesText = {
+      top: limitedSeatsTopText || "Hurry",
+      bottom: limitedSeatsBottomText || "Limited Seats"
+    };
+    const eventLinkComponent = encodeURIComponent(eventName.replace(/\s/g, "-").toLowerCase());
+    const imgProps = {
+      src: eventPoster?.url ?? "",
+      alt: `${companyName} | ${eventName}`
+    };
+    return (
+      <FeaturedEventCard
+        date={mainDate}
+        image={imgProps}
+        hasLimitedSeates={limitedSeats}
+        title={eventName}
+        description={shortDescription}
+        location={venue}
+        link={`/events/${eventLinkComponent}`}
+        css={featuredCardCss}
+        limitedSeatesText={limitedSeatesText}
+        key={"featured-card-" + index}
+      />
+    );
+  };
   return (
     <FullWidthWrapper css={homeFeaturedContainerCss}>
       <h2 css={homeFeaturedHeadingCss}>Featured Events</h2>
@@ -90,70 +129,7 @@ export default function HomeFeaturedSection() {
           <RightIcon css={featuredArrowIconCss} />
         </button>
         <div css={featuredCardsContainerCss} ref={cardsContainerRef}>
-          <FeaturedEventCard
-            date={new Date()}
-            image={{
-              src: "https://images.pexels.com/photos/9072250/pexels-photo-9072250.jpeg",
-              alt: "Image"
-            }}
-            hasLimitedSeates
-            title="Gok Trek"
-            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum."
-            location="Gokarna"
-            link="/events/gok-trek"
-            css={featuredCardCss}
-          />
-          <FeaturedEventCard
-            date={new Date()}
-            image={{
-              // eslint-disable-next-line max-len
-              src: "https://images.pexels.com/photos/8819460/pexels-photo-8819460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-              alt: "Image"
-            }}
-            hasLimitedSeates
-            title="Speed Friendship"
-            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum."
-            location="Gokarna"
-            link="/events/gok-trek"
-            css={featuredCardCss}
-          />
-          <FeaturedEventCard
-            date={new Date()}
-            image={{
-              // eslint-disable-next-line max-len
-              src: "https://images.pexels.com/photos/16617569/pexels-photo-16617569/free-photo-of-family-having-a-garden-party.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-              alt: "Image"
-            }}
-            title="Dance"
-            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum."
-            location="Gokarna"
-            link="/events/gok-trek"
-            css={featuredCardCss}
-          />
-          <FeaturedEventCard
-            date={new Date()}
-            image={{
-              src: "https://images.pexels.com/photos/9072250/pexels-photo-9072250.jpeg",
-              alt: "Image"
-            }}
-            title="Dance"
-            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum."
-            location="Gokarna"
-            link="/events/gok-trek"
-            css={featuredCardCss}
-          />
-          <FeaturedEventCard
-            date={new Date()}
-            image={{
-              src: "https://images.pexels.com/photos/9072250/pexels-photo-9072250.jpeg",
-              alt: "Image"
-            }}
-            title="Dance"
-            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum."
-            location="Gokarna"
-            css={featuredCardCss}
-            link="/events/gok-trek"
-          />
+          {featuredEvents.map(eventMapper)}
         </div>
         <button
           css={featuredNavButtonsCss}
@@ -166,7 +142,7 @@ export default function HomeFeaturedSection() {
         </button>
       </div>
       <div css={dotsContainerCss} ref={dotsContainerRef}>
-        {Array(5).fill(0).map(dotMapper)}
+        {featuredEvents.map(dotMapper)}
       </div>
     </FullWidthWrapper>
   );

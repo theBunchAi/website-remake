@@ -14,7 +14,7 @@ export const projectCardWrapperCss = css`
   overflow: hidden;
   border-radius: var(--common-border-radius);
   padding: 5%;
-  aspect-ratio: 2.7755;
+  aspect-ratio: 2.65;
   font-size: 1rem;
   box-shadow: var(--common-shadow);
   & > *:not(img) {

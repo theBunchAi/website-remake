@@ -1,11 +1,13 @@
 import { useEffect, useRef } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { meta } from "@common-data";
+import { companyName, meta } from "@common-data";
 import EventCard from "@components/event-card";
 import FullWidthWrapper from "@components/full-width-wrapper";
 import useSwipe from "@hooks/use-swipe";
+import { CommonEventItem } from "@modules/common/types";
 import { eventListContainer, eventListWrapper, eventsPageContainer, headingsContainer } from "@modules/events/styles";
+import { EventPageProps } from "@modules/events/types";
 
 const EventsHead = () => {
   const { events: eventsMeta } = meta;
@@ -23,7 +25,8 @@ const EventsHead = () => {
   );
 };
 
-export default function EventsModule() {
+export default function EventsModule(props: EventPageProps) {
+  const { upcomingEvents = [], pastEvents = [] } = props;
   const headingContainerRef = useRef<HTMLDivElement>(null);
   const eventListWrapperRef = useRef<HTMLDivElement>(null);
 
@@ -60,6 +63,26 @@ export default function EventsModule() {
     }
   }, [category]);
 
+  const eventsMapper = (event: CommonEventItem, index: number) => {
+    const { eventDate, eventName, eventPoster, shortDescription, venue } = event;
+    const linkComponent = encodeURIComponent(eventName.replace(/\s/g, "-").toLowerCase());
+    const mainDate = new Date(eventDate);
+    const isEventDateInPast = mainDate < new Date();
+    return (
+      <EventCard
+        key={`${isEventDateInPast ? "past" : "upcoming"}-event-${index}`}
+        date={mainDate}
+        title={eventName}
+        description={shortDescription}
+        imgSrc={eventPoster?.url ?? ""}
+        imgAlt={`${companyName} | ${eventName}`}
+        link={`/events/${linkComponent}`}
+        location={venue}
+        isNotHighlighted={isEventDateInPast}
+      />
+    );
+  };
+
   return (
     <FullWidthWrapper css={eventsPageContainer}>
       <EventsHead />
@@ -71,43 +94,10 @@ export default function EventsModule() {
       </div>
       <div css={eventListWrapper} ref={eventListWrapperRef}>
         <section css={eventListContainer} id="upcoming-events">
-          {Array(8)
-            .fill(0)
-            .map((_, index) => {
-              return (
-                <EventCard
-                  date={new Date()}
-                  title="Event"
-                  key={index + "evep"}
-                  location="Location"
-                  description="
-            lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl quis ultricies
-            "
-                  link="/events/gok-trek"
-                  imgSrc="https://images.pexels.com/photos/9072250/pexels-photo-9072250.jpeg"
-                />
-              );
-            })}
+          {upcomingEvents.map(eventsMapper)}
         </section>
         <section css={eventListContainer} id="past-events">
-          {Array(8)
-            .fill(0)
-            .map((_, index) => {
-              return (
-                <EventCard
-                  date={new Date()}
-                  title="Event"
-                  key={index + "eveu"}
-                  location="Location"
-                  isHiglihgted={false}
-                  description="
-            lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl quis ultricies
-            "
-                  link="/events/gok-trek"
-                  imgSrc="https://images.pexels.com/photos/9072250/pexels-photo-9072250.jpeg"
-                />
-              );
-            })}
+          {pastEvents.map(eventsMapper)}
         </section>
       </div>
     </FullWidthWrapper>

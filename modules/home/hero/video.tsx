@@ -1,7 +1,11 @@
-import { homeHeroContent } from "@modules/home/content";
 import { heroVideoCss } from "@modules/home/hero/styles";
 
-export default function HomeHeroVideo() {
-  const { posterImg, videoLink } = homeHeroContent;
-  return <video controls muted loop autoPlay playsInline src={videoLink} css={heroVideoCss} poster={posterImg}></video>;
+interface HomeHeroVideoProps {
+  posterUrl: string;
+  videoUrl: string;
+}
+
+export default function HomeHeroVideo(props: HomeHeroVideoProps) {
+  const { posterUrl = "", videoUrl = "" } = props;
+  return <video controls muted loop autoPlay playsInline src={videoUrl} css={heroVideoCss} poster={posterUrl}></video>;
 }
