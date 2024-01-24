@@ -62,7 +62,7 @@ export default function Footer() {
       <nav css={mainNavWrapperCss}>{nav.map(navMapper)}</nav>
       <div className="socials" css={socialsWrapperCss}>
         <span>{socialsTopText}</span>
-        <nav>{socialLinks.map(socialsMapper)}</nav>
+        <nav className="nav">{socialLinks.map(socialsMapper)}</nav>
       </div>
     </FullWidthWrapper>
   );

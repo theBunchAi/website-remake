@@ -83,4 +83,9 @@ export const globalStyles = css`
   ::-webkit-scrollbar-track {
     background: transparent;
   }
+
+  a {
+    min-height: 48px;
+    min-width: 48px;
+  }
 `;

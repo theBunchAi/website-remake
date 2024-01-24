@@ -68,9 +68,12 @@ export const projectCardLinkCss = css`
   font-weight: 600;
   background-color: var(--color-white);
   font-size: clamp(10px, 1.25vw, 1em);
-  padding: 0.375em 1em;
+  padding: 0.375em 1.5em;
   border-radius: 2rem;
   margin-top: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   ${mediaQuery.mobile} {
     font-size: 1rem;
     margin: 0.5em auto 0 auto;

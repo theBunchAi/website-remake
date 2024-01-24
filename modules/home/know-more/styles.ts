@@ -1,5 +1,5 @@
-import { mediaQuery } from "@common-styles";
 import { css } from "@emotion/react";
+import { mediaQuery } from "@common-styles";
 
 export const knowMoreOuterWrapperCss = css`
   background-color: var(--color-primary-neutral);
@@ -28,6 +28,10 @@ export const knowMoreWrapperCss = css`
     text-decoration: none;
     font-weight: 500;
     border-bottom: 2px solid currentColor;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   ${mediaQuery.mobile} {
     padding: 10% 0;

@@ -64,11 +64,14 @@ export const mainNavWrapperCss = css`
     color: var(--color-xDark-grey);
     font-weight: 500;
     text-decoration: none;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
   }
   ${mediaQuery.mobile} {
+    gap: 0;
     grid-template-rows: repeat(4, 1fr);
     font-size: 0.85rem;
-    row-gap: 10px;
   }
 `;
 
@@ -82,7 +85,13 @@ export const socialsWrapperCss = css`
   & * {
     color: inherit;
   }
+  .nav {
+    display: flex;
+  }
   a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 2em;
     & * {
       font-size: inherit;
@@ -92,7 +101,7 @@ export const socialsWrapperCss = css`
     justify-content: center;
     align-items: flex-start;
     a {
-      font-size: 1.75rem;
+      font-size: 2.25rem;
     }
   }
 `;
