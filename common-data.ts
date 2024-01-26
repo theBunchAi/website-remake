@@ -165,5 +165,13 @@ export const meta: {
       title: "TheBunch.ai | Events",
       description: "Events page of the app"
     }
+  },
+  about: {
+    title: "TheBunch.ai | About",
+    description: "About page of the app",
+    og: {
+      title: "TheBunch.ai | About",
+      description: "About page of the app"
+    }
   }
 };
