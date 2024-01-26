@@ -104,4 +104,20 @@ export const gqlFaqsData = gql`
   }
 `;
 
+export const gqlAboutPageData = gql`
+  query {
+    staticData: staticContentCollection(limit: 1) {
+      items {
+        aboutBannerImage {
+          url
+        }
+        aboutBannerHeading
+        aboutFullText {
+          json
+        }
+      }
+    }
+  }
+`;
+
 export default gql;
