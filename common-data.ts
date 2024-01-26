@@ -173,5 +173,13 @@ export const meta: {
       title: "TheBunch.ai | About",
       description: "About page of the app"
     }
+  },
+  faqs: {
+    title: "TheBunch.ai | FAQs",
+    description: "FAQ page of the app",
+    og: {
+      title: "TheBunch.ai | FAQs",
+      description: "FAQ page of the app"
+    }
   }
 };

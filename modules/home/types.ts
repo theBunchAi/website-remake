@@ -28,11 +28,7 @@ export interface HomePageProps {
   projects: ProjectItem[];
 }
 
-export interface HomeModuleProps {
+export interface HomeModuleProps extends Omit<HomePageProps, "staticData"> {
   heroProps: HomeHeroProps;
   aboutDocument: Document;
-  featuredEvents: FeaturedEventItem[];
-  upcomingEvents: CommonEventItem[];
-  pastEvents: CommonEventItem[];
-  projects: ProjectItem[];
 }

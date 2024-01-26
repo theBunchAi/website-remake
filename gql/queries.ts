@@ -88,4 +88,20 @@ export const gqlPastEvents = gql`
   }
 `;
 
+export const gqlFaqsData = gql`
+  query {
+    faQsCollection(limit: 50) {
+      items {
+        question
+        answer
+      }
+    }
+    staticData: staticContentCollection(limit: 1) {
+      items {
+        faqSubHeading
+      }
+    }
+  }
+`;
+
 export default gql;
