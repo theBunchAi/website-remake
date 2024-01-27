@@ -1,6 +1,6 @@
 import { CommonEventItem, ItemsWrapper } from "@modules/common/types";
 
-export interface EventPageProps {
+export interface EventsPageProps {
   upcomingEvents: CommonEventItem[];
   pastEvents: CommonEventItem[];
 }

@@ -3,9 +3,9 @@ import gqlClient from "@/gql/client";
 import { gqlUpcomingEvents, gqlPastEvents } from "@/gql/queries";
 import PageWrapper from "@components/page-wrapper";
 import EventsModule from "@modules/events";
-import { EventPageProps, UpcomingEventsContent, PastEventsContent } from "@modules/events/types";
+import { EventsPageProps, UpcomingEventsContent, PastEventsContent } from "@modules/events/types";
 
-export default function EventsPage(props: EventPageProps) {
+export default function EventsPage(props: EventsPageProps) {
   const { upcomingEvents, pastEvents } = props;
   return (
     <PageWrapper name="events">
