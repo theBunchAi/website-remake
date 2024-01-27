@@ -43,7 +43,7 @@ export const gqlHomeData = gql`
         ${commonHomeEventFields}
       }
     }
-    pastEvents: eventInfoCollection(limit: 3, where: { eventDate_lt: $currentDate }, order: [eventDate_ASC]) {
+    pastEvents: eventInfoCollection(limit: 3, where: { eventDate_lt: $currentDate }, order: [eventDate_DESC]) {
       items {
         ${commonHomeEventFields}
       }
@@ -106,7 +106,7 @@ export const gqlFaqsData = gql`
 
 export const gqlAboutPageData = gql`
   query {
-    staticData: staticContentCollection(limit: 1) {
+    aboutData: staticContentCollection(limit: 1) {
       items {
         aboutBannerImage {
           url

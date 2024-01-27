@@ -4,7 +4,6 @@ import moment from "moment";
 import {
   bannerHeadingCss,
   bannerContainerCss,
-  bannerPageWrapperCss,
   boldDetailSpanCss,
   costContainerCss,
   detailsContainerCss,
@@ -18,12 +17,12 @@ import FullWidthWrapper from "@components/full-width-wrapper";
 import PageWrapper from "@components/page-wrapper";
 
 export default function BannerPageWrapper(props: BannerWidthWrapperProps) {
-  const { pageName, heading, children, cost, bannerDetails, img, secondChild } = props;
+  const { pageName, heading, children, cost, bannerDetails, img, secondChild, className } = props;
 
   const momentDate = moment(bannerDetails?.date ?? new Date());
 
   const costElem = cost && (
-    <FullWidthWrapper element="div" css={costContainerCss} wrapperCss={costWrapperCss}>
+    <FullWidthWrapper css={costContainerCss} wrapperCss={costWrapperCss}>
       <span className="cost-span">
         <b>Rs. {cost}</b>
         <span> / Person</span>
@@ -49,15 +48,15 @@ export default function BannerPageWrapper(props: BannerWidthWrapperProps) {
 
   return (
     <PageWrapper name={pageName}>
-      <FullWidthWrapper element="div" css={bannerContainerCss}>
+      <FullWidthWrapper css={bannerContainerCss}>
         <div css={bannerImgContainerCss}>
-          <Image src={img.src} alt={img.alt} sizes="100%" fill />
+          <Image src={img.src} alt={img.alt} sizes="100%" fill priority />
           {bannerDetailsElem}
         </div>
         <h1 css={bannerHeadingCss}>{heading}</h1>
       </FullWidthWrapper>
-      <FullWidthWrapper wrapperCss={bannerPageWrapperCss}>
-        <div css={textContainerCss}>{children}</div>
+      <FullWidthWrapper className={className} css={textContainerCss}>
+        {children}
         {secondChild}
       </FullWidthWrapper>
       {costElem}

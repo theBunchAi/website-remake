@@ -13,4 +13,5 @@ export interface BannerWidthWrapperProps extends PropsWithChildren {
     alt: string;
   };
   secondChild?: ReactNode;
+  className?: string;
 }

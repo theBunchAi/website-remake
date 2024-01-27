@@ -1,15 +1,12 @@
 import { css } from "@emotion/react";
 import { mediaQuery } from "@common-styles";
 
-export const bannerPageWrapperCss = css`
-  flex-direction: column;
-`;
-
 export const bannerContainerCss = css`
   margin: 5vh 0;
   position: relative;
   border-radius: 15px;
   overflow: hidden;
+  user-select: none;
   ${mediaQuery.mobile} {
     width: 100%;
     margin: 0;
@@ -23,12 +20,13 @@ export const bannerImgContainerCss = css`
   aspect-ratio: 3.5;
   overflow: hidden;
   box-shadow: 0 17.5px 20px -15px var(--color-xDark-grey);
+  background-color: var(--color-secondary-highlight);
   &::before {
     content: "";
     position: absolute;
     height: 100%;
     width: 100%;
-    background: linear-gradient(to top, var(--color-primary-highlight), transparent, transparent);
+    background: linear-gradient(to top, var(--color-primary-highlight), transparent);
     inset: 0;
     z-index: 1;
   }
@@ -37,13 +35,18 @@ export const bannerImgContainerCss = css`
     position: absolute;
     object-fit: cover;
     object-position: center;
+    opacity: 0.5;
   }
   ${mediaQuery.mobile} {
     width: 100%;
     height: 45vh;
     border-radius: 0 0 2.5rem 2.5rem;
     img {
+      opacity: 1;
       border-radius: 0;
+    }
+    &::before {
+      content: none;
     }
   }
 `;
@@ -55,24 +58,30 @@ export const bannerHeadingCss = css`
   z-index: 1;
   transform: translate(-50%, -50%);
   color: var(--color-white);
-  font-size: clamp(3rem, 4.5vw, 6rem);
+  font-size: 4rem;
   font-weight: 500;
   text-align: center;
   ${mediaQuery.mobile} {
     position: static;
-    z-index: 10;
     color: var(--color-black);
     transform: none;
     text-align: none;
-    font-size: 1.6rem;
+    font-size: 1.75rem;
     width: fit-content;
-    margin: 2vh 0;
-    margin-left: 5%;
+    margin: 1.5em 0 1em 7.5vw;
+    font-weight: 600;
   }
 `;
 
 export const textContainerCss = css`
-  margin: 0 7.5%;
+  padding: 0 7.5%;
+  padding-bottom: 5vh;
+  & > * {
+    margin-bottom: 1em;
+  }
+  p {
+    font-weight: 500;
+  }
 `;
 
 export const costWrapperCss = css`
