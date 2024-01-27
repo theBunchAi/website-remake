@@ -181,5 +181,13 @@ export const meta: {
       title: "TheBunch.ai | FAQs",
       description: "FAQ page of the app"
     }
+  },
+  404: {
+    title: "TheBunch.ai | Page Not Found",
+    description: "404 page of the app",
+    og: {
+      title: "TheBunch.ai | Page Not Found",
+      description: "404 page of the app"
+    }
   }
 };
