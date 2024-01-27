@@ -6,9 +6,9 @@ import FullWidthWrapper from "@components/full-width-wrapper";
 import useSwipe from "@hooks/use-swipe";
 import { CommonEventItem } from "@modules/common/types";
 import { eventListContainer, eventListWrapper, eventsPageContainer, headingsContainer } from "@modules/events/styles";
-import { EventPageProps } from "@modules/events/types";
+import { EventsPageProps } from "@modules/events/types";
 
-export default function EventsModule(props: EventPageProps) {
+export default function EventsModule(props: EventsPageProps) {
   const { upcomingEvents = [], pastEvents = [] } = props;
   const headingContainerRef = useRef<HTMLDivElement>(null);
   const eventListWrapperRef = useRef<HTMLDivElement>(null);

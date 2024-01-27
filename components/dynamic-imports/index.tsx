@@ -20,3 +20,7 @@ export const ShareIcon = dynamic(() => import("@mui/icons-material/ShareRounded"
   ssr: false,
   loading: () => <>⠪</>
 });
+export const CalendarIcon = dynamic(() => import("@mui/icons-material/CalendarMonthRounded"), {
+  ssr: false,
+  loading: () => <>📅</>
+});

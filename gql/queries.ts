@@ -120,4 +120,48 @@ export const gqlAboutPageData = gql`
   }
 `;
 
+export const gqlEventNames = gql`
+  query ($skip: Int!) {
+    eventNames: eventInfoCollection(limit: 100, skip: $skip) {
+      total
+      skip
+      limit
+      items {
+        eventName
+      }
+    }
+  }
+`;
+
+export const gqlEventDetails = gql`
+  query ($eventName: String!) {
+    eventData: eventInfoCollection(limit: 1, where: { eventName_contains: $eventName }) {
+      items {
+        eventName
+        eventDate
+        eventPrice
+        eventPoster {
+          url
+        }
+        eventDuration
+        venue
+        venueMapsLink
+        helperText
+        longDescription {
+          json
+        }
+        shortDescription
+        tabsCollection(limit: 3) {
+          items {
+            tabTitle
+            tabText {
+              json
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
 export default gql;

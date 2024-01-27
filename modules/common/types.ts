@@ -28,3 +28,9 @@ export interface ProjectItem {
 export interface ItemsWrapper<ItemType> {
   items: ItemType[];
 }
+
+export interface ItemsExtendedWrapper<T> extends ItemsWrapper<T> {
+  total: number;
+  skip: number;
+  limit: number;
+}

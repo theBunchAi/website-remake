@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import moment from "moment";
+import { format } from "date-fns";
 import { companyName } from "@common-data";
 import { LocationOnIcon } from "@components/dynamic-imports";
 import {
@@ -15,12 +15,11 @@ import { EventCardProps } from "@components/event-card/types";
 
 export default function EventCard(props: EventCardProps) {
   const { date, imgSrc, title, imgAlt, className, isNotHighlighted = false, description, location, link } = props;
-  const dateMoment = moment(date);
   const time = {
-    day: dateMoment.format("DD"),
-    month: dateMoment.format("MMM"),
-    year: dateMoment.format("YYYY"),
-    twelveHourTime: dateMoment.format("hh:mm A")
+    day: format(date, "dd"),
+    month: format(date, "MMM"),
+    year: format(date, "yyyy"),
+    twelveHourTime: format(date, "hh:mm a")
   };
   return (
     <Link href={link} className={className} css={eventCardLinkCss}>

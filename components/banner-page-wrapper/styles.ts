@@ -53,6 +53,7 @@ export const bannerImgContainerCss = css`
 
 export const bannerHeadingCss = css`
   position: absolute;
+  width: 75%;
   top: 50%;
   left: 50%;
   z-index: 1;

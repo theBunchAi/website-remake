@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import moment from "moment";
+import { format } from "date-fns";
 import {
   bannerHeadingCss,
   bannerContainerCss,
@@ -19,9 +19,9 @@ import PageWrapper from "@components/page-wrapper";
 export default function BannerPageWrapper(props: BannerWidthWrapperProps) {
   const { pageName, heading, children, cost, bannerDetails, img, secondChild, className } = props;
 
-  const momentDate = moment(bannerDetails?.date ?? new Date());
+  const dateObj = bannerDetails?.date ?? new Date();
 
-  const costElem = cost && (
+  const costElem = (
     <FullWidthWrapper css={costContainerCss} wrapperCss={costWrapperCss}>
       <span className="cost-span">
         <b>Rs. {cost}</b>
@@ -36,11 +36,11 @@ export default function BannerPageWrapper(props: BannerWidthWrapperProps) {
   const bannerDetailsElem = bannerDetails && (
     <div css={headerDetailsWrapperCss}>
       <span css={detailsContainerCss} className="banner-date">
-        <span css={boldDetailSpanCss}>{momentDate.format("DD MMM")}</span>
-        <span>{momentDate.format("YYYY")}</span>
+        <span css={boldDetailSpanCss}>{format(dateObj, "dd MMM")}</span>
+        <span>{format(dateObj, "yyyy")}</span>
       </span>
       <span css={detailsContainerCss} className="banner-venue">
-        <span css={boldDetailSpanCss}>{momentDate.format("hh:mm A")}</span>
+        <span css={boldDetailSpanCss}>{format(dateObj, "hh:mm a")}</span>
         <span>{bannerDetails.location}</span>
       </span>
     </div>
