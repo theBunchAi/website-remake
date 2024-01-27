@@ -21,7 +21,7 @@ export default function BannerPageWrapper(props: BannerWidthWrapperProps) {
 
   const dateObj = bannerDetails?.date ?? new Date();
 
-  const costElem = (
+  const costElem = cost && (
     <FullWidthWrapper css={costContainerCss} wrapperCss={costWrapperCss}>
       <span className="cost-span">
         <b>Rs. {cost}</b>
