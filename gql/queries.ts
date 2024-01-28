@@ -10,6 +10,24 @@ const commonHomeEventFields = `
     }
 `;
 
+const commonDocumentFields = `
+    json
+    links {
+      assets {
+        block {
+          url
+          description
+          width
+          height
+          contentType
+          sys{
+              id
+            }
+        }
+      }
+    }
+`;
+
 export const gqlHomeData = gql`
   query ($currentDate: DateTime!) {
     staticData: staticContentCollection(limit: 1) {
@@ -23,7 +41,7 @@ export const gqlHomeData = gql`
           url
         }
         homeAboutText {
-          json
+          ${commonDocumentFields}
         }
       }
     }
@@ -113,7 +131,7 @@ export const gqlAboutPageData = gql`
         }
         aboutBannerHeading
         aboutFullText {
-          json
+          ${commonDocumentFields}
         }
       }
     }
@@ -146,16 +164,29 @@ export const gqlEventDetails = gql`
         eventDuration
         venue
         venueMapsLink
+        formLink
         helperText
         longDescription {
-          json
+          ${commonDocumentFields}
         }
         shortDescription
         tabsCollection(limit: 3) {
           items {
             tabTitle
             tabText {
-              json
+              ${commonDocumentFields}
+            }
+          }
+        }
+        bottomCollection(limit: 3) {
+          items {
+            title
+            titlePrefix
+            titleSuffix
+            shortBrief
+            buttonText
+            projectImage {
+              url
             }
           }
         }

@@ -1,5 +1,27 @@
+import type { Document } from "@contentful/rich-text-types";
+
 export interface CommonAsset {
   url: string;
+}
+
+export interface CommonAssetLink {
+  sys: {
+    id: string;
+  };
+  description: string;
+  url: string;
+  height: number;
+  width: number;
+  contentType: string;
+}
+
+export interface CommonDocument {
+  json: Document;
+  links: {
+    assets: {
+      block: CommonAssetLink[];
+    };
+  };
 }
 
 export interface CommonEventItem {

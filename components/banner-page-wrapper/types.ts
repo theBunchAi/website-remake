@@ -1,9 +1,8 @@
 import { PropsWithChildren, ReactNode } from "react";
 
-export interface BannerWidthWrapperProps extends PropsWithChildren {
+export interface BannerPageWrapperProps extends PropsWithChildren {
   pageName?: string;
   heading: string;
-  cost?: number | undefined;
   bannerDetails?: {
     date: Date;
     location: string;
@@ -14,4 +13,11 @@ export interface BannerWidthWrapperProps extends PropsWithChildren {
   };
   secondChild?: ReactNode;
   className?: string;
+  bottomBar?: BannerPageWrapperBottomBar | null;
+}
+
+export interface BannerPageWrapperBottomBar {
+  cost: number;
+  link: string;
+  buttonText?: string;
 }

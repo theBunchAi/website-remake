@@ -1,5 +1,4 @@
-import { Document } from "@contentful/rich-text-types";
-import { CommonAsset, ItemsWrapper } from "@modules/common/types";
+import { CommonAsset, CommonDocument, ItemsWrapper } from "@modules/common/types";
 
 export interface AboutContent {
   aboutData: ItemsWrapper<AboutItem>;
@@ -8,9 +7,7 @@ export interface AboutContent {
 export interface AboutItem {
   aboutBannerHeading: string;
   aboutBannerImage: CommonAsset;
-  aboutFullText: {
-    json: Document;
-  };
+  aboutFullText: CommonDocument;
 }
 
 export interface AboutProps {

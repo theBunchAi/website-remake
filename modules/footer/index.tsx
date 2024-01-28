@@ -1,4 +1,6 @@
 import Link from "next/link";
+import parse from "html-react-parser";
+import { sanitize } from "isomorphic-dompurify";
 import { footerContent } from "@common-data";
 import FullWidthWrapper from "@components/full-width-wrapper";
 import {
@@ -53,9 +55,13 @@ export default function Footer() {
       </a>
     );
   };
+
+  const cleanAttrSpan = sanitize(attributesHtml);
+  const parsedAttrSpan = parse(cleanAttrSpan);
+
   const lowerJsx = (
     <div className="attribute" css={footerLowerWrapperCss}>
-      <span dangerouslySetInnerHTML={{ __html: attributesHtml }} />
+      <span>{parsedAttrSpan}</span>
       <span>{bottomText}</span>
     </div>
   );

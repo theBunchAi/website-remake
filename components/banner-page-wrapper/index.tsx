@@ -12,23 +12,24 @@ import {
   textContainerCss,
   bannerImgContainerCss
 } from "@components/banner-page-wrapper/styles";
-import { BannerWidthWrapperProps } from "@components/banner-page-wrapper/types";
+import { BannerPageWrapperProps } from "@components/banner-page-wrapper/types";
 import FullWidthWrapper from "@components/full-width-wrapper";
 import PageWrapper from "@components/page-wrapper";
 
-export default function BannerPageWrapper(props: BannerWidthWrapperProps) {
-  const { pageName, heading, children, cost, bannerDetails, img, secondChild, className } = props;
+export default function BannerPageWrapper(props: BannerPageWrapperProps) {
+  const { pageName, heading, children, bannerDetails, img, secondChild, className, bottomBar } = props;
+  const { cost = 0, link = "", buttonText = "Request an invite" } = bottomBar ?? {};
 
   const dateObj = bannerDetails?.date ?? new Date();
 
-  const costElem = cost && (
+  const costElem = bottomBar && (
     <FullWidthWrapper css={costContainerCss} wrapperCss={costWrapperCss}>
       <span className="cost-span">
         <b>Rs. {cost}</b>
         <span> / Person</span>
       </span>
-      <Link href="/" className="invite-cta">
-        Request An Invite
+      <Link href={link} className="invite-cta" target="_blank" rel="noopener noreferrer">
+        {buttonText}
       </Link>
     </FullWidthWrapper>
   );

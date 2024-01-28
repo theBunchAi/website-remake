@@ -1,5 +1,12 @@
-import type { Document } from "@contentful/rich-text-types";
-import { CommonAsset, CommonEventItem, FeaturedEventItem, ItemsWrapper, ProjectItem } from "@modules/common/types";
+import { Document } from "@contentful/rich-text-types";
+import {
+  CommonAsset,
+  CommonDocument,
+  CommonEventItem,
+  FeaturedEventItem,
+  ItemsWrapper,
+  ProjectItem
+} from "@modules/common/types";
 import { HomeHeroProps } from "@modules/home/hero/types";
 
 interface StaticDataItem {
@@ -7,9 +14,7 @@ interface StaticDataItem {
   homeVideoPlaceholderText: string;
   homeVideoPoster: CommonAsset;
   homeVideo: CommonAsset;
-  homeAboutText: {
-    json: Document;
-  };
+  homeAboutText: CommonDocument;
 }
 
 export interface HomeContent {

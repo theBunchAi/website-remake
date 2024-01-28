@@ -66,10 +66,10 @@ export const bannerHeadingCss = css`
     position: static;
     color: var(--color-black);
     transform: none;
-    text-align: none;
+    text-align: center;
     font-size: 1.75rem;
-    width: fit-content;
-    margin: 1.5em 0 1em 7.5vw;
+    width: 100%;
+    margin: 1.5em 0;
     font-weight: 600;
   }
 `;
@@ -82,6 +82,9 @@ export const textContainerCss = css`
   }
   p {
     font-weight: 500;
+  }
+  ${mediaQuery.mobile} {
+    padding: 0;
   }
 `;
 

@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
-import Link from "next/link";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { format } from "date-fns";
 import { companyName } from "@common-data";
 import BannerPageWrapper from "@components/banner-page-wrapper";
-import { CalendarIcon, LocationOnIcon } from "@components/dynamic-imports";
+import type { BannerPageWrapperBottomBar } from "@components/banner-page-wrapper/types";
+import ContentfulDocument from "@components/contentful-document";
+import MiniEventDetails from "@modules/event/mini-details";
+import { eventSubHeadingCss } from "@modules/event/styles";
+import Tabs from "@modules/event/tabs";
 import { EventDetailsItem } from "@modules/event/types";
 
 export default function EventModule(props: EventDetailsItem) {
@@ -18,39 +19,39 @@ export default function EventModule(props: EventDetailsItem) {
     shortDescription,
     eventDuration,
     venueMapsLink,
-    helperText
+    helperText,
+    tabsCollection,
+    formLink
   } = props;
   const eventDate = useMemo(() => new Date(propEventDate), [propEventDate]);
-  const [cost, setCost] = useState<number | undefined>(undefined);
+  const tabs = tabsCollection?.items ?? [];
+  tabs.push();
+  const [bottomBar, setBottomBar] = useState<BannerPageWrapperBottomBar | null>(null);
+  const bannerDetails = { date: eventDate, location: venue };
+  const bannerImg = { src: eventPoster?.url ?? "", alt: `${eventName} | ${companyName}` };
+
   useEffect(() => {
     const rawDate = new Date();
     if (eventDate > rawDate) {
-      setCost(eventPrice);
+      setBottomBar({
+        cost: eventPrice,
+        link: formLink
+      });
     }
-  }, [eventPrice, eventDate]);
+  }, [eventPrice, eventDate, formLink]);
+
   return (
-    <BannerPageWrapper
-      heading={eventName}
-      img={{ src: eventPoster?.url ?? "", alt: `${eventName} | ${companyName}` }}
-      cost={cost}
-      bannerDetails={{ date: eventDate, location: venue }}
-    >
-      <span className="short-desc">{shortDescription}</span>
-      <div>
-        <div>
-          <CalendarIcon />
-          <div>
-            <span>{`${format(eventDate, "EEEE, d MMM")}`}</span>
-            <span>{`${format(eventDate, "hh:mm aaa")} onwards ( ${eventDuration} )`}</span>
-          </div>
-        </div>
-        <Link href={venueMapsLink}>
-          <LocationOnIcon />
-          <span>{venue}</span>
-        </Link>
-        <div>{helperText || "Hosted in english"}</div>
-      </div>
-      {documentToReactComponents(longDescription?.json)}
+    <BannerPageWrapper heading={eventName} img={bannerImg} bottomBar={bottomBar} bannerDetails={bannerDetails}>
+      <p css={eventSubHeadingCss}>{shortDescription}</p>
+      <MiniEventDetails
+        eventDate={eventDate}
+        eventDuration={eventDuration}
+        venue={venue}
+        venueMapsLink={venueMapsLink}
+        helperText={helperText || "Hosted in english"}
+      />
+      <ContentfulDocument {...longDescription} />
+      <Tabs items={tabsCollection?.items ?? []} />
     </BannerPageWrapper>
   );
 }

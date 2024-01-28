@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { BLOCKS, type Document } from "@contentful/rich-text-types";
+import { BLOCKS, Document } from "@contentful/rich-text-types";
 import FullWidthWrapper from "@components/full-width-wrapper";
 import { knowMoreOuterWrapperCss, knowMoreWrapperCss } from "@modules/home/know-more/styles";
 interface HomeKnowMoreSectionProps {
