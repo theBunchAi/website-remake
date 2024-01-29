@@ -90,6 +90,9 @@ export const textContainerCss = css`
 
 export const costWrapperCss = css`
   background-color: var(--color-primary-highlight);
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
 `;
 
 export const costContainerCss = css`

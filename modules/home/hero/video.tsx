@@ -7,5 +7,5 @@ interface HomeHeroVideoProps {
 
 export default function HomeHeroVideo(props: HomeHeroVideoProps) {
   const { posterUrl = "", videoUrl = "" } = props;
-  return <video controls muted loop autoPlay playsInline src={videoUrl} css={heroVideoCss} poster={posterUrl}></video>;
+  return <video muted loop autoPlay playsInline src={videoUrl} css={heroVideoCss} poster={posterUrl}></video>;
 }

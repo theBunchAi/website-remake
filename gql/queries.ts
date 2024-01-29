@@ -45,7 +45,7 @@ export const gqlHomeData = gql`
         }
       }
     }
-    featuredEvents: eventInfoCollection(limit: 3, where: { featuredEvent: true }, order: [eventDate_ASC]) {
+    featuredEvents: eventInfoCollection(limit: 10, where: { featuredEvent: true }, order: [eventDate_ASC]) {
         items {
             ${commonHomeEventFields}
             limitedSeats

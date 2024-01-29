@@ -64,6 +64,7 @@ export const tabsWrapperCss = css`
   flex-direction: column;
   margin: 3rem 0;
   gap: 1.5rem;
+  line-height: 1.75em;
 `;
 
 export const tabsButtonsWrapperCss = css`
@@ -110,6 +111,7 @@ export const tabsContentWrapperCss = css`
   display: flex;
   width: 100%;
   overflow-x: auto;
+  overflow-y: hidden;
   scroll-snap-type: x mandatory;
   & > * {
     width: 100%;

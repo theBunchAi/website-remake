@@ -103,7 +103,6 @@ export const featuredLocationContainerCss = css`
   gap: 0.5em;
   .featured-right-arrow {
     margin-left: auto;
-    font-size: 2em;
-    height: fit-content;
+    font-size: 2.5em;
   }
 `;

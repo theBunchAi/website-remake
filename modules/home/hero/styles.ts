@@ -5,7 +5,7 @@ export const heroWrapperCss = css`
   height: calc(90vh - var(--header-height));
   width: 100%;
   position: relative;
-  border-radius: 0 0 3rem 3rem;
+  border-radius: 0 0 2rem 2rem;
   overflow: hidden;
   background-color: var(--color-secondary-highlight);
   ${mediaQuery.mobile} {
