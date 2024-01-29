@@ -12,6 +12,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const projects = await gqlClient.request<AllProjectsContent>(gqlAllProjects);
   const items = projects?.projects?.items || [];
   return {
-    props: { items }
+    props: { items },
+    revalidate: 7 * 24 * 60 * 60
   };
 };

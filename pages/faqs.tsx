@@ -16,6 +16,7 @@ export const getStaticProps: GetStaticProps = async () => {
       faqSubHeading:
         faqsData?.staticData?.items?.[0]?.faqSubHeading ??
         "Here are a few frequently asked questions about the brand and events."
-    }
+    },
+    revalidate: 7 * 24 * 60 * 60
   };
 };

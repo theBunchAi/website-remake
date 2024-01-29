@@ -15,7 +15,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       title: projectName
     })) ?? {};
   return {
-    props: { ...(projectData?.items?.[0] ?? {}) }
+    props: { ...(projectData?.items?.[0] ?? {}) },
+    revalidate: 7 * 24 * 60 * 60
   };
 };
 

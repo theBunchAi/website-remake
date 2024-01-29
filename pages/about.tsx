@@ -13,6 +13,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       aboutData: aboutData?.aboutData?.items?.[0] ?? {}
-    }
+    },
+    revalidate: 7 * 24 * 60 * 60
   };
 };

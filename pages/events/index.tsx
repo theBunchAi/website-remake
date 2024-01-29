@@ -25,6 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       upcomingEvents: upcomingEvents?.upcomingEvents?.items ?? [],
       pastEvents: pastEvents?.pastEvents?.items ?? []
-    }
+    },
+    revalidate: 7 * 24 * 60 * 60
   };
 };
