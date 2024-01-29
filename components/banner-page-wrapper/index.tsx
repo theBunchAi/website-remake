@@ -1,3 +1,4 @@
+import { PropsWithChildren } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { format } from "date-fns";
@@ -16,8 +17,8 @@ import { BannerPageWrapperProps } from "@components/banner-page-wrapper/types";
 import FullWidthWrapper from "@components/full-width-wrapper";
 import PageWrapper from "@components/page-wrapper";
 
-export default function BannerPageWrapper(props: BannerPageWrapperProps) {
-  const { pageName, heading, children, bannerDetails, img, secondChild, className, bottomBar } = props;
+export default function BannerPageWrapper(props: PropsWithChildren<BannerPageWrapperProps>) {
+  const { pageName, heading, children, bannerDetails, img, secondChild, className, bottomBar, pageMeta } = props;
   const { cost = 0, link = "", buttonText = "Request an invite" } = bottomBar ?? {};
 
   const dateObj = bannerDetails?.date ?? new Date();
@@ -48,7 +49,7 @@ export default function BannerPageWrapper(props: BannerPageWrapperProps) {
   );
 
   return (
-    <PageWrapper name={pageName}>
+    <PageWrapper name={pageName} meta={pageMeta}>
       <FullWidthWrapper css={bannerContainerCss}>
         <div css={bannerImgContainerCss}>
           <Image src={img.src} alt={img.alt} sizes="100%" fill priority />

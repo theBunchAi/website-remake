@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { Options, documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { BLOCKS } from "@contentful/rich-text-types";
+import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import { companyName } from "@common-data";
+import { anchorCss, listContainerCss, paragraphCss } from "@components/contentful-document/styles";
 import { CommonAssetLink, CommonDocument } from "@modules/common/types";
 
 interface ContentfulDocumentProps extends CommonDocument {
@@ -14,6 +15,7 @@ export default function ContentfulDocument(props: ContentfulDocumentProps) {
     const data = links?.assets?.block?.find((asset) => asset.sys.id === assetId);
     return data as CommonAssetLink;
   };
+  const { renderNode, ...restExtraOptions } = extraOptions || {};
   const documentRenderingOptions: Options = {
     renderNode: {
       [BLOCKS.EMBEDDED_ASSET]: (props) => {
@@ -27,9 +29,18 @@ export default function ContentfulDocument(props: ContentfulDocumentProps) {
           return <video autoPlay muted src={url} loop />;
         }
         return <></>;
-      }
+      },
+      [BLOCKS.OL_LIST]: (_, children) => <ol css={listContainerCss}>{children}</ol>,
+      [BLOCKS.UL_LIST]: (_, children) => <ul css={listContainerCss}>{children}</ul>,
+      [BLOCKS.PARAGRAPH]: (_, children) => <p css={paragraphCss}>{children}</p>,
+      [INLINES.HYPERLINK]: (data, children) => (
+        <a target="_blank" rel="noopener noreferrer" css={anchorCss} href={data.data.uri}>
+          {children}
+        </a>
+      ),
+      ...renderNode
     },
-    ...extraOptions
+    ...restExtraOptions
   };
   return <>{documentToReactComponents(json, documentRenderingOptions)}</>;
 }

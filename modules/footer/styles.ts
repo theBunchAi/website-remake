@@ -46,20 +46,17 @@ export const footerLowerWrapperCss = css`
     font-weight: 600;
     color: black;
     text-decoration: none;
-    display: inline-flex;
+    min-height: unset;
+    /* display: inline-flex; */
     justify-content: center;
     align-items: center;
   }
   ${mediaQuery.mobile} {
     width: 100%;
     gap: 0.75em;
-    padding: 0.75em 0 2em 0;
+    padding: 2em 0;
     & > * {
       flex-direction: column;
-      min-height: 48px;
-    }
-    .attribute-container {
-      min-height: 48px;
     }
     .break {
       display: block;
@@ -93,7 +90,7 @@ export const mainNavWrapperCss = css`
   }
   ${mediaQuery.mobile} {
     gap: 0;
-    grid-template-rows: repeat(4, 1fr);
+    width: 100%;
     font-size: 0.85rem;
   }
 `;

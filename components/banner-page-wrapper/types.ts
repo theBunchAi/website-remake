@@ -1,7 +1,9 @@
-import { PropsWithChildren, ReactNode } from "react";
+import { ReactNode } from "react";
+import { PageWrapperProps } from "@components/page-wrapper/types";
 
-export interface BannerPageWrapperProps extends PropsWithChildren {
-  pageName?: string;
+export interface BannerPageWrapperProps {
+  pageName: string;
+  pageMeta?: PageWrapperProps["meta"];
   heading: string;
   bannerDetails?: {
     date: Date;

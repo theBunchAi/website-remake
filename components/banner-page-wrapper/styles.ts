@@ -31,7 +31,6 @@ export const bannerImgContainerCss = css`
     z-index: 1;
   }
   img {
-    border-radius: 15px;
     position: absolute;
     object-fit: cover;
     object-position: center;
@@ -40,7 +39,7 @@ export const bannerImgContainerCss = css`
   ${mediaQuery.mobile} {
     width: 100%;
     height: 45vh;
-    border-radius: 0 0 2.5rem 2.5rem;
+    border-radius: 0 0 2rem 2rem;
     img {
       opacity: 1;
       border-radius: 0;
@@ -93,10 +92,10 @@ export const costWrapperCss = css`
   position: sticky;
   bottom: 0;
   z-index: 5;
+  height: var(--header-height);
 `;
 
 export const costContainerCss = css`
-  padding: 2vh 0;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -110,21 +109,25 @@ export const costContainerCss = css`
     text-decoration: none;
     font-weight: 600;
     background-color: var(--color-white);
-    font-size: clamp(10px, 1.25vw, 1em);
-    padding: 0.375em 1.5em;
+    font-size: 1rem;
+    padding: 0.625em 1.5em;
     border-radius: 2rem;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     width: fit-content;
     justify-content: center;
     text-align: center;
+    width: fit-content;
   }
   ${mediaQuery.mobile} {
+    font-size: clamp(0.75rem, 4vw, 1.125rem);
+    justify-content: space-between;
     .invite-cta {
-      font-size: 1rem;
+      padding: 0em 1.5em;
+      font-size: inherit;
     }
     .cost-span {
-      font-size: 1rem;
+      font-size: inherit;
     }
   }
 `;

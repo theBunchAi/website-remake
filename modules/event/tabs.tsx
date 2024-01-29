@@ -1,4 +1,4 @@
-import { MouseEventHandler, useEffect, useRef } from "react";
+import { MouseEventHandler, useRef } from "react";
 import ContentfulDocument from "@components/contentful-document";
 import {
   tabButtonCss,
@@ -8,6 +8,7 @@ import {
   tabsWrapperCss
 } from "@modules/event/styles";
 import { EventDetailsItem } from "@modules/event/types";
+import useTabs from "@modules/event/use-tabs";
 
 const Tabs = (props: EventDetailsItem["tabsCollection"]) => {
   const { items } = props;
@@ -15,6 +16,13 @@ const Tabs = (props: EventDetailsItem["tabsCollection"]) => {
   const tabsContentWrapperRef = useRef<HTMLDivElement>(null);
   const tabsButtonsWrapperRef = useRef<HTMLDivElement>(null);
   const tabIndicatorRef = useRef<HTMLDivElement>(null);
+
+  useTabs({
+    tabsContentWrapperRef,
+    tabsButtonsWrapperRef,
+    tabIndicatorRef,
+    items
+  });
 
   type TabItemType = EventDetailsItem["tabsCollection"]["items"][0];
 
@@ -29,47 +37,32 @@ const Tabs = (props: EventDetailsItem["tabsCollection"]) => {
       });
     };
     return (
-      <button css={tabButtonCss} className="tab-btn" key={`tab-btn-${index}`} data-index={index} onClick={clickHandler}>
+      <button
+        key={`tab-btn-${index}`}
+        css={tabButtonCss}
+        className="tab-btn"
+        role="tab"
+        type="button"
+        aria-controls={"tab-content-" + tabTitle}
+        id={"tab-btn-" + tabTitle}
+        onClick={clickHandler}
+        data-index={index}
+      >
         {tabTitle}
       </button>
     );
   };
 
-  useEffect(() => {
-    tabIndicatorRef.current?.style?.setProperty("width", `${100 / items.length}%`);
-    (tabsButtonsWrapperRef.current?.firstChild as HTMLButtonElement)?.classList?.add("active");
-  }, [items]);
-
-  useEffect(() => {
-    const target = tabsContentWrapperRef.current;
-    if (target) {
-      const observerOptions: IntersectionObserverInit = {
-        root: target,
-        threshold: 0.51
-      };
-      const observerCallback: IntersectionObserverCallback = (entries) => {
-        const intersectingEntry = entries.find((entry) => entry.isIntersecting)?.target;
-        const index = Number(intersectingEntry?.getAttribute("data-index") ?? 0);
-        const t = tabsButtonsWrapperRef.current?.children[index] as HTMLButtonElement;
-        tabIndicatorRef.current?.style?.setProperty("left", `${(100 / items.length) * index}%`);
-        for (const button of Array.from(tabsButtonsWrapperRef.current?.children ?? [])) {
-          button.classList.remove("active");
-        }
-        t?.classList.add("active");
-      };
-      const observer = new IntersectionObserver(observerCallback, observerOptions);
-      for (const item of Array.from(target.children)) {
-        observer.observe(item);
-      }
-      return () => observer.disconnect();
-    }
-    return;
-  }, [items]);
-
   const tabContentMapper = (item: TabItemType, index: number) => {
-    const { tabText } = item;
+    const { tabText, tabTitle } = item;
     return (
-      <div key={`tab-content-${index}`} data-index={index}>
+      <div
+        key={`tab-content-${index}`}
+        data-index={index}
+        aria-labelledby={"tab-btn-" + tabTitle}
+        id={"tab-content-" + tabTitle}
+        role="tabpanel"
+      >
         <ContentfulDocument {...tabText} />
       </div>
     );
@@ -77,7 +70,7 @@ const Tabs = (props: EventDetailsItem["tabsCollection"]) => {
 
   return (
     <div css={tabsWrapperCss}>
-      <div ref={tabsButtonsWrapperRef} css={tabsButtonsWrapperCss}>
+      <div ref={tabsButtonsWrapperRef} css={tabsButtonsWrapperCss} role="tablist">
         {items.map(tabButtonMapper)}
         <div ref={tabIndicatorRef} css={tabIndicatorCss}></div>
       </div>

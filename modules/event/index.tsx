@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { companyName } from "@common-data";
 import BannerPageWrapper from "@components/banner-page-wrapper";
-import type { BannerPageWrapperBottomBar } from "@components/banner-page-wrapper/types";
+import type { BannerPageWrapperBottomBar, BannerPageWrapperProps } from "@components/banner-page-wrapper/types";
 import ContentfulDocument from "@components/contentful-document";
 import MiniEventDetails from "@modules/event/mini-details";
 import { eventSubHeadingCss } from "@modules/event/styles";
@@ -40,8 +40,24 @@ export default function EventModule(props: EventDetailsItem) {
     }
   }, [eventPrice, eventDate, formLink]);
 
+  const meta: BannerPageWrapperProps["pageMeta"] = {
+    title: eventName,
+    description: shortDescription,
+    og: {
+      title: eventName,
+      description: shortDescription
+    }
+  };
+
   return (
-    <BannerPageWrapper heading={eventName} img={bannerImg} bottomBar={bottomBar} bannerDetails={bannerDetails}>
+    <BannerPageWrapper
+      heading={eventName}
+      img={bannerImg}
+      bottomBar={bottomBar}
+      bannerDetails={bannerDetails}
+      pageName={eventName.replace(/\s/g, "-").toLowerCase()}
+      pageMeta={meta}
+    >
       <p css={eventSubHeadingCss}>{shortDescription}</p>
       <MiniEventDetails
         eventDate={eventDate}

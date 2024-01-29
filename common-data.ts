@@ -44,8 +44,8 @@ export const navBarContent = {
         link: "/events"
       },
       {
-        text: "The Bucketlist Project",
-        link: "/bucketlist"
+        text: "Projects",
+        link: "/projects"
       },
       {
         text: "About Us",
@@ -85,6 +85,11 @@ export const footerContent: {
   topText: companyName,
   nav: [
     {
+      text: "All Events",
+      link: "/events",
+      isLong: false
+    },
+    {
       text: "Past Events",
       link: "/events?category=past",
       isLong: false
@@ -92,6 +97,11 @@ export const footerContent: {
     {
       text: "Upcoming Events",
       link: "/events?category=upcoming",
+      isLong: false
+    },
+    {
+      text: "All Projects",
+      link: "/projects",
       isLong: false
     },
     {
@@ -164,6 +174,14 @@ export const meta: {
     og: {
       title: "TheBunch.ai | Events",
       description: "Events page of the app"
+    }
+  },
+  projects: {
+    title: "TheBunch.ai | Projects",
+    description: "Projects page of the app",
+    og: {
+      title: "TheBunch.ai | Projects",
+      description: "Projects page of the app"
     }
   },
   about: {

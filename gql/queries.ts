@@ -195,4 +195,54 @@ export const gqlEventDetails = gql`
   }
 `;
 
+export const gqlAllProjects = gql`
+  query {
+    projects: projectsCollection {
+      items {
+        title
+        titlePrefix
+        titleSuffix
+        shortBrief
+        projectImage {
+          url
+        }
+        buttonText
+      }
+    }
+  }
+`;
+
+export const gqlProjectNames = gql`
+  query ($skip: Int!) {
+    projectNames: projectsCollection(limit: 100, skip: $skip) {
+      total
+      skip
+      limit
+      items {
+        title
+      }
+    }
+  }
+`;
+
+export const gqlProjectDetails = gql`
+  query ($title: String!) {
+    projectData: projectsCollection(limit: 1, where: { title_contains: $title }) {
+      items {
+        title
+        titlePrefix
+        titleSuffix
+        shortBrief
+        projectImage {
+          url
+        }
+        buttonText
+        projectDescription {
+          ${commonDocumentFields}
+        }
+      }
+    }
+  }
+`;
+
 export default gql;

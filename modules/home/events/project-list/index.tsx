@@ -8,13 +8,14 @@ export default function HomeProjectList(props: HomeProjectListProps) {
   const { projects = [] } = props;
   const projectMapper = (project: ProjectItem, index: number) => {
     const { title, buttonText, projectImage, shortBrief, titlePrefix, titleSuffix } = project;
+    const url = "/projects/" + encodeURI(title.replace(/\s/gm, "-").toLowerCase());
     return (
       <FeaturedProjectCard
         key={"home-project-card-" + index}
         title={title}
         description={shortBrief}
         linkText={buttonText}
-        linkUrl="/"
+        linkUrl={url}
         imgSrc={projectImage?.url ?? ""}
         titlePrefix={titlePrefix}
         titleSuffix={titleSuffix}

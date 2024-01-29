@@ -22,10 +22,7 @@ export default function Footer() {
     const { link = "", text = "" } = attrVal;
     for (let i = 0; i < attributeTextsSplit.length; i++) {
       const mainStr = attributeTextsSplit[i] ?? "";
-      attributeTextsSplit[i] = mainStr.replace(
-        attrKey,
-        `<a href="${link}" target="_blank" rel="noopener noreferrer">${text}</a>`
-      );
+      attributeTextsSplit[i] = mainStr.replace(attrKey, `<a href="${link}" >${text}</a>`);
     }
   }
   for (let i = 0; i < attributeTextsSplit.length; i++) {

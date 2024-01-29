@@ -70,7 +70,7 @@ export const tabsWrapperCss = css`
 export const tabsButtonsWrapperCss = css`
   display: flex;
   width: 80%;
-  height: 2.5rem;
+  height: 48px;
   margin: 0 auto;
   justify-content: center;
   align-items: center;
@@ -78,6 +78,7 @@ export const tabsButtonsWrapperCss = css`
   border-radius: 3rem;
   overflow: hidden;
   position: relative;
+  font-size: 1.15rem;
 `;
 
 export const tabButtonCss = css`
@@ -91,7 +92,8 @@ export const tabButtonCss = css`
   z-index: 2;
   transition: all 0.4s ease;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: inherit;
+  color: var(--color-xDark-grey);
   &.active {
     color: var(--color-white);
   }

@@ -26,7 +26,7 @@ export const knowMoreWrapperCss = css`
   .link {
     color: inherit;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     border-bottom: 2px solid currentColor;
     display: flex;
     flex-direction: column;
@@ -40,6 +40,12 @@ export const knowMoreWrapperCss = css`
     }
     .para {
       text-align: left;
+    }
+    .link {
+      border-bottom: 0;
+      border: 1px solid currentColor;
+      padding: 0 2em;
+      border-radius: 3rem;
     }
   }
 `;
