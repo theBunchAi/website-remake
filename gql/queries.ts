@@ -237,6 +237,7 @@ export const gqlProjectDetails = gql`
           url
         }
         buttonText
+        formLink
         projectDescription {
           ${commonDocumentFields}
         }

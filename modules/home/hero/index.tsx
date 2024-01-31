@@ -3,7 +3,7 @@ import parse from "html-react-parser";
 import { sanitize } from "isomorphic-dompurify";
 import { heroHeadingCss, heroWrapperCss } from "@modules/home/hero/styles";
 import { HomeHeroProps } from "@modules/home/hero/types";
-const HomeHeroVideo = dynamic(() => import("@modules/home/hero/video"), { ssr: false });
+const HomeHeroVideo = dynamic(() => import("@modules/home/hero/video"), { ssr: false, loading: () => <></> });
 
 export default function HomeHeroSection(props: HomeHeroProps) {
   const { heroMainText = "", heroPlaceholderText = "", posterUrl, videoUrl } = props;

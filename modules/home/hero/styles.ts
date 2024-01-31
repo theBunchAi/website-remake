@@ -22,15 +22,15 @@ export const heroVideoCss = css`
 
 export const heroHeadingCss = css`
   position: absolute;
-  top: 25%;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 75%;
+  left: 0%;
+  transform: translateY(-50%);
   font-size: 4rem;
   width: 100%;
   text-align: center;
-  text-shadow: 0 0 2rem var(--color-grey);
+  text-shadow: 0 0 0.5em var(--color-black), 0 0 0.25em var(--color-black), 0 0 0.125em var(--color-black);
   font-weight: 700;
-  color: black;
+  color: var(--color-white);
 
   & > * {
     padding: 0 0.5em;

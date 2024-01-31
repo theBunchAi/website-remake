@@ -9,7 +9,7 @@ export default function FaqModule(props: FaqPageProps) {
   const faqMapper = (faq: FaqItem, index: number) => {
     return (
       <div key={index} css={faqContainerCss}>
-        <p className="faq-question">{faq.question}</p>
+        <h3 className="faq-question">{faq.question}</h3>
         <p className="faq-answer">{faq.answer}</p>
       </div>
     );

@@ -25,12 +25,15 @@ export default function useTabs(props: UseTabsProps) {
   useEffect(() => {
     const target = tabsContentWrapperRef.current;
     if (target) {
+      const tabContainers = Array.from(target.children) as HTMLDivElement[];
       const observerOptions: IntersectionObserverInit = {
         root: target,
         threshold: 0.51
       };
       const observerCallback: IntersectionObserverCallback = (entries) => {
-        const intersectingEntry = entries.find((entry) => entry.isIntersecting)?.target;
+        target.style.removeProperty("height");
+        const intersectingEntry = entries.find((entry) => entry.isIntersecting)?.target as HTMLDivElement | undefined;
+        const setterHeight = intersectingEntry?.offsetHeight;
         const index = Number(intersectingEntry?.getAttribute("data-index") ?? 0);
         const buttons = getTabButtons();
         const btn = buttons[index] as HTMLButtonElement;
@@ -41,10 +44,13 @@ export default function useTabs(props: UseTabsProps) {
         }
         btn?.classList.add("active");
         btn?.setAttribute("aria-selected", "true");
+        if (setterHeight) {
+          target.style.setProperty("height", `${setterHeight}px`);
+        }
       };
       const observer = new IntersectionObserver(observerCallback, observerOptions);
-      for (const item of Array.from(target.children)) {
-        observer.observe(item);
+      for (const tabContainer of tabContainers) {
+        observer.observe(tabContainer);
       }
       return () => observer.disconnect();
     }

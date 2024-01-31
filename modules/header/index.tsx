@@ -7,13 +7,14 @@ import {
   hamContainerCss,
   headerContainerCss,
   headerWrapperCss,
-  locationContainerCss,
+  // locationContainerCss,
   logoContainerCss,
   otherContentCss
 } from "./styles";
 
 export default function Header() {
-  const { leftText, locationText } = navBarContent;
+  // const { leftText, locationText } = navBarContent;
+  const { leftText } = navBarContent;
   const hamRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
   const hamClickHandler = () => {
@@ -43,10 +44,10 @@ export default function Header() {
         <span>{leftText}</span>
       </Link>
       <div className="other-content" css={otherContentCss}>
-        <div className="location-container" css={locationContainerCss}>
+        {/* <div className="location-container" css={locationContainerCss}>
           <span>{locationText}</span>
           <span>to be decided</span>
-        </div>
+        </div> */}
         <div className="ham-btn" css={hamContainerCss} onClick={hamClickHandler} ref={hamRef}>
           <div></div>
           <div></div>

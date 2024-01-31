@@ -41,10 +41,10 @@ export default function EventModule(props: EventDetailsItem) {
   }, [eventPrice, eventDate, formLink]);
 
   const meta: BannerPageWrapperProps["pageMeta"] = {
-    title: eventName,
+    title: `${companyName} | ${eventName} | Event`,
     description: shortDescription,
     og: {
-      title: eventName,
+      title: `${companyName} | ${eventName} | Event`,
       description: shortDescription
     }
   };

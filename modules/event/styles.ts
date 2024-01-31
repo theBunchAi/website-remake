@@ -115,8 +115,12 @@ export const tabsContentWrapperCss = css`
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  transition: all 1s ease;
   & > * {
+    height: fit-content;
     width: 100%;
+    padding: 0 5px;
     flex-shrink: 0;
     scroll-snap-align: center;
     & > * {

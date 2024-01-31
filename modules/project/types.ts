@@ -12,6 +12,7 @@ export interface ProjectDetailsItem {
   projectImage: CommonAsset;
   buttonText: string;
   projectDescription: CommonDocument;
+  formLink: string;
 }
 
 export interface ProjectDetailsContent {
