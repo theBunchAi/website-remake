@@ -1,5 +1,6 @@
 import { Fragment, Ref, forwardRef } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { navBarContent } from "@common-data";
 import { mainNavCss, navContainerCss, navWrapperCss } from "@modules/header/nav/styles";
 
@@ -13,11 +14,12 @@ function N(
 ) {
   const { nav } = navBarContent;
   const { links } = nav;
+  const { asPath } = useRouter();
   const navLinkMapper = (slink: (typeof links)[0], index: number) => {
     const { text, link } = slink;
     return (
       <Fragment key={"main-nav-link-" + index}>
-        <Link href={link} onClick={clickHandler}>
+        <Link href={link} onClick={clickHandler} className={asPath === link ? "active" : undefined}>
           {text}
         </Link>
       </Fragment>

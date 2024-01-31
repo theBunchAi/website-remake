@@ -44,8 +44,12 @@ export const navBarContent = {
         link: "/events"
       },
       {
-        text: "Projects",
-        link: "/projects"
+        text: "The Bucketlist Projects",
+        link: "/projects/the-bucketlist-project"
+      },
+      {
+        text: "Let's Collaborate",
+        link: "/projects/collaborate"
       },
       {
         text: "About Us",

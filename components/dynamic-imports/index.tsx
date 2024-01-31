@@ -24,3 +24,7 @@ export const CalendarIcon = dynamic(() => import("@mui/icons-material/CalendarMo
   ssr: false,
   loading: () => <>📅</>
 });
+export const DownIcon = dynamic(() => import("@mui/icons-material/KeyboardArrowDown"), {
+  ssr: false,
+  loading: () => <>↓</>
+});

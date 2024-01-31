@@ -1,7 +1,8 @@
 import dynamic from "next/dynamic";
 import parse from "html-react-parser";
 import { sanitize } from "isomorphic-dompurify";
-import { heroHeadingCss, heroWrapperCss } from "@modules/home/hero/styles";
+import { DownIcon } from "@components/dynamic-imports";
+import { downIconCss, heroHeadingCss, heroWrapperCss } from "@modules/home/hero/styles";
 import { HomeHeroProps } from "@modules/home/hero/types";
 const HomeHeroVideo = dynamic(() => import("@modules/home/hero/video"), { ssr: false, loading: () => <></> });
 
@@ -16,6 +17,7 @@ export default function HomeHeroSection(props: HomeHeroProps) {
     <section css={heroWrapperCss}>
       <HomeHeroVideo posterUrl={posterUrl} videoUrl={videoUrl} />
       <h1 css={heroHeadingCss}>{parsedH1}</h1>
+      <DownIcon className="down-icon" css={downIconCss} />
     </section>
   );
 }

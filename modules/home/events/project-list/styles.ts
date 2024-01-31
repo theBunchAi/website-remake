@@ -12,6 +12,7 @@ export const projectListWrapperCss = css`
     height: fit-content;
     padding-top: 0;
     padding-bottom: 0;
-    gap: 0;
+    gap: calc(var(--header-height) / 3);
+    padding-bottom: calc(var(--header-height) / 3);
   }
 `;

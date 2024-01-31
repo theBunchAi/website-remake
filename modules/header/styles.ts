@@ -20,10 +20,13 @@ export const headerContainerCss = css`
 export const logoContainerCss = css`
   font-family: var(--font-heading);
   font-weight: 500;
-  font-size: clamp(1.5rem, 9vw, 2rem);
+  font-size: clamp(1.5rem, 7vw, 1.85rem);
   text-shadow: 1px -1px 3px rgba(0, 0, 0, 0.4), -1px 1px 3px rgba(255, 255, 255, 0.4);
   color: inherit;
   text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const otherContentCss = css`
