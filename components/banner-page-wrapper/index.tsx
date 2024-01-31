@@ -36,7 +36,7 @@ export default function BannerPageWrapper(props: PropsWithChildren<BannerPageWra
   );
 
   const bannerDetailsElem = bannerDetails && (
-    <div css={headerDetailsWrapperCss}>
+    <div css={headerDetailsWrapperCss} suppressHydrationWarning>
       <span css={detailsContainerCss} className="banner-date">
         <span css={boldDetailSpanCss}>{format(dateObj, "dd MMM")}</span>
         <span>{format(dateObj, "yyyy")}</span>
