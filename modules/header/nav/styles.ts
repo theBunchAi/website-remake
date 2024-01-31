@@ -49,22 +49,22 @@ export const mainNavCss = css`
     position: relative;
     display: inline-block;
     width: fit-content;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background-color: var(--color-primary-highlight);
+      transition: width 0.5s ease;
+    }
+    &.active::after {
+      width: 100%;
+    }
     ${mediaQuery.desktop} {
-      &::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0%;
-        height: 3px;
-        background-color: var(--color-primary-highlight);
-        transition: width 0.5s ease;
-      }
       &:hover {
         font-weight: 500;
-      }
-      &.active::after {
-        width: 100%;
       }
     }
     ${mediaQuery.mobile} {

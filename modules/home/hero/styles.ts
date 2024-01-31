@@ -7,9 +7,6 @@ export const heroWrapperCss = css`
   position: relative;
   overflow: hidden;
   background-color: var(--color-secondary-highlight);
-  ${mediaQuery.mobile} {
-    height: calc(75vh - var(--header-height));
-  }
   margin-bottom: var(--common-section-gap);
 `;
 
