@@ -12,5 +12,5 @@ export const projectLinkBtnCss = css`
   text-decoration: none;
   font-weight: 500;
   width: fit-content;
-  margin: 5rem 0 0 auto;
+  margin: 4rem 0 2rem auto;
 `;
