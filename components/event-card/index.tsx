@@ -26,13 +26,9 @@ export default function EventCard(props: EventCardProps) {
       <article css={eventCardArticleCss}>
         <div css={eventCardPictureContainerCss}>
           <Image src={imgSrc} alt={imgAlt ?? companyName + " | Event | " + title} fill sizes="100%" />
-          <div
-            css={eventCardHighlightContainerCss}
-            className={isNotHighlighted ? "inactive" : "active"}
-            suppressHydrationWarning
-          >
-            <span>{`${time.month} ${time.day} ${time.year}`}</span>
-            <span>{`${time.twelveHourTime} onwards`}</span>
+          <div css={eventCardHighlightContainerCss} className={isNotHighlighted ? "inactive" : "active"}>
+            <span suppressHydrationWarning>{`${time.month} ${time.day} ${time.year}`}</span>
+            <span suppressHydrationWarning>{`${time.twelveHourTime} onwards`}</span>
           </div>
         </div>
         <div css={eventCardTextContainerCss}>

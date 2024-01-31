@@ -18,9 +18,9 @@ const MiniEventDetails = (props: MiniEventDetailsProps) => {
     <div css={eventDetailSectionWrapperCss}>
       <div css={eventDetailContainerCss}>
         <CalendarIcon />
-        <div className="date-container" suppressHydrationWarning>
-          <span className="upper-date">{`${upperDate}`}</span>
-          <span className="lower-date">{`${lowerDate} onwards ( ${eventDuration} )`}</span>
+        <div className="date-container">
+          <span className="upper-date" suppressHydrationWarning>{`${upperDate}`}</span>
+          <span className="lower-date" suppressHydrationWarning>{`${lowerDate} onwards ( ${eventDuration} )`}</span>
         </div>
       </div>
       <a target="_blank" rel="noopener noreferrer" href={venueMapsLink} css={eventDetailContainerCss}>

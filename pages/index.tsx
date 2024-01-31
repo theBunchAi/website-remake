@@ -40,6 +40,6 @@ export const getStaticProps: GetStaticProps = async () => {
       pastEvents: homeData?.pastEvents?.items ?? [],
       projects: homeData?.projects?.items ?? []
     },
-    revalidate: 7 * 24 * 60 * 60
+    revalidate: 6 * 60 * 60
   };
 };

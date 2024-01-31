@@ -36,13 +36,17 @@ export default function BannerPageWrapper(props: PropsWithChildren<BannerPageWra
   );
 
   const bannerDetailsElem = bannerDetails && (
-    <div css={headerDetailsWrapperCss} suppressHydrationWarning>
+    <div css={headerDetailsWrapperCss}>
       <span css={detailsContainerCss} className="banner-date">
-        <span css={boldDetailSpanCss}>{format(dateObj, "dd MMM")}</span>
-        <span>{format(dateObj, "yyyy")}</span>
+        <span css={boldDetailSpanCss} suppressHydrationWarning>
+          {format(dateObj, "dd MMM")}
+        </span>
+        <span suppressHydrationWarning>{format(dateObj, "yyyy")}</span>
       </span>
       <span css={detailsContainerCss} className="banner-venue">
-        <span css={boldDetailSpanCss}>{format(dateObj, "hh:mm a")}</span>
+        <span css={boldDetailSpanCss} suppressHydrationWarning>
+          {format(dateObj, "hh:mm a")}
+        </span>
         <span>{bannerDetails.location}</span>
       </span>
     </div>

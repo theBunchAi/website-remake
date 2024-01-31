@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { format } from "date-fns";
 import Location from "@components/featured-event-card/location";
 import {
   featuredCardBottomCss,
@@ -26,19 +27,19 @@ export default function FeaturedEventCard(props: FeaturedCardProps) {
     link,
     className
   } = props;
-  const day = date.getDate();
-  const month = date.toLocaleString("default", { month: "short" });
-  const year = date.getFullYear();
+  const day = format(date, "dd");
+  const month = format(date, "MMM");
+  const year = format(date, "yyyy");
   return (
     <Link href={link} className={className} css={featuredCardWrapperCss}>
       <article css={featuredCardContainerCss}>
         <Image src={image?.src ?? ""} alt={image?.alt ?? ""} fill sizes="100%" />
         <div css={featuredCardGradientCss}></div>
         <div css={featuredCardDateCss}>
-          <span>
+          <span suppressHydrationWarning>
             {day} {month}
           </span>
-          <span>{year}</span>
+          <span suppressHydrationWarning>{year}</span>
         </div>
         {hasLimitedSeates && (
           <div css={featuredLimitedSeatsCss}>
