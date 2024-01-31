@@ -50,13 +50,23 @@ export const footerLowerWrapperCss = css`
     /* display: inline-flex; */
     justify-content: center;
     align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   ${mediaQuery.mobile} {
     width: 100%;
-    gap: 0.75em;
-    padding: 2em 0;
+    gap: 0em;
     & > * {
       flex-direction: column;
+      height: 48px;
+    }
+    .attribute-container {
+      height: 100%;
+      * {
+        height: 100%;
+      }
     }
     .break {
       display: block;

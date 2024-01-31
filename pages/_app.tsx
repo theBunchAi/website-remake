@@ -5,6 +5,7 @@ import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { globalFonts, globalStyles } from "@/styles/global";
 import Footer from "@modules/footer";
 import Header from "@modules/header";
+import Head from "next/head";
 
 const outfitFont = localFont({
   src: [
@@ -65,6 +66,10 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <GoogleTagManager gtmId="GTM-MH5RF4FK" />
       <GoogleAnalytics gaId="G-7L2RMX12CD" />
+      <Head>
+        <link rel="dns-prefetch" href="https://images.ctfassets.net" />
+        <link rel="preconnect" href="https://images.ctfassets.net" />
+      </Head>
       <Header />
       <Component {...pageProps} />
       <Global

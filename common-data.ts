@@ -139,12 +139,13 @@ export const footerContent: {
     links: socialLinks.filter((social) => social.name !== "email")
   },
   attributes: {
-    text: "Designed by <DESIGNER> | Developed by <DEVELOPER>",
+    // text: "Designed by <DESIGNER> | Developed by <DEVELOPER>",
+    text: "Developed by <DEVELOPER>",
     links: {
-      "<DESIGNER>": {
-        link: "https://www.linkedin.com/in/anjalijoshy/",
-        text: "Anjali Joshy"
-      },
+      // "<DESIGNER>": {
+      //   link: "https://www.linkedin.com/in/anjalijoshy/",
+      //   text: "Anjali Joshy"
+      // },
       "<DEVELOPER>": {
         link: "https://www.hymnsofweb.com",
         text: "Hymns Of Web"
