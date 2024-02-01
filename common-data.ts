@@ -108,12 +108,12 @@ export const footerContent: {
     },
     {
       text: "The Bucketlist Project",
-      link: "/bucketlist",
+      link: "/projects/the-bucketlist-project",
       isLong: true
     },
     {
       text: "Let's Collaborate",
-      link: "/collaborate",
+      link: "/projects/collaborate",
       isLong: false
     },
     {

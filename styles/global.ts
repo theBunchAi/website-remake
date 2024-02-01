@@ -1,12 +1,7 @@
 import { css } from "@emotion/react";
 import { mediaQuery } from "@common-styles";
 
-const fontUrl =
-  // eslint-disable-next-line max-len
-  "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100;0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;0,9..40,1000;1,9..40,100;1,9..40,200;1,9..40,300;1,9..40,400;1,9..40,500;1,9..40,600;1,9..40,700;1,9..40,800;1,9..40,900;1,9..40,1000&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap";
-
 export const globalStyles = css`
-  /* @import url(${fontUrl}); */
   :root {
     --color-primary-highlight: #1804b4;
     --color-primary-neutral: #d9e0ff;
