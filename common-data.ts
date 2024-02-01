@@ -1,6 +1,7 @@
 import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 export const companyName = "TheBunch.ai";
 
@@ -8,6 +9,7 @@ export const email = "a@b.com";
 export const phone = "1234567890";
 export const instagram = "thebunch.ai";
 export const facebook = "people/The-Bunchai/100080487391695";
+export const linkedIn = "thebunch-ai";
 export const socialLinks = [
   {
     name: "email",
@@ -26,6 +28,12 @@ export const socialLinks = [
     id: facebook,
     link: `https://www.facebook.com/${facebook}`,
     icon: FacebookIcon
+  },
+  {
+    name: "linkedin",
+    id: linkedIn,
+    link: `https://www.linkedin.com/company/${linkedIn}`,
+    icon: LinkedInIcon
   }
 ];
 
@@ -89,11 +97,6 @@ export const footerContent: {
   topText: companyName,
   nav: [
     {
-      text: "All Events",
-      link: "/events",
-      isLong: false
-    },
-    {
       text: "Past Events",
       link: "/events?category=past",
       isLong: false
@@ -104,39 +107,25 @@ export const footerContent: {
       isLong: false
     },
     {
-      text: "All Projects",
-      link: "/projects",
-      isLong: false
-    },
-    {
       text: "The Bucketlist Project",
       link: "/bucketlist",
       isLong: true
     },
     {
-      text: "Refund & Privacy Policy",
-      link: "/policy",
-      isLong: true
+      text: "Let's Collaborate",
+      link: "/collaborate",
+      isLong: false
     },
     {
       text: "FAQs",
       link: "/faqs",
       isLong: false
-    },
-    {
-      text: "Terms of Service",
-      link: "/terms",
-      isLong: false
-    },
-    {
-      text: "Contact Us",
-      link: "/contact",
-      isLong: false
     }
   ],
   socials: {
     topText: "Follow us",
-    links: socialLinks.filter((social) => social.name !== "email")
+    // links: socialLinks.filter((social) => social.name !== "email")
+    links: socialLinks
   },
   attributes: {
     // text: "Designed by <DESIGNER> | Developed by <DEVELOPER>",

@@ -8,6 +8,13 @@ export const heroWrapperCss = css`
   overflow: hidden;
   background-color: var(--color-secondary-highlight);
   margin-bottom: var(--common-section-gap);
+  &::before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.35);
+  }
 `;
 
 const downAnimation = keyframes`
@@ -32,6 +39,9 @@ export const downIconCss = css`
   font-size: 5rem;
   color: var(--color-white);
   animation: ${downAnimation} 1.5s ease-in-out infinite forwards;
+  ${mediaQuery.mobile} {
+    top: 75%;
+  }
 `;
 
 export const heroVideoCss = css`
@@ -56,12 +66,13 @@ export const heroHeadingCss = css`
     padding: 0 0.5em;
     color: var(--color-white);
     background-color: var(--color-primary-highlight);
-    border-radius: 2rem;
+    border-radius: 0.5em;
     text-shadow: 0 0 0rem var(--color-white);
     font-weight: 600;
   }
 
   ${mediaQuery.mobile} {
     font-size: clamp(1.25rem, 7.5vw, 2.5rem);
+    top: 70%;
   }
 `;

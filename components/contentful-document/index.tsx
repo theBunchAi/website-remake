@@ -26,7 +26,7 @@ export default function ContentfulDocument(props: ContentfulDocumentProps) {
           return <Image alt={description || companyName} height={height} src={url} width={width} />;
         }
         if (contentType.includes("video")) {
-          return <video autoPlay muted src={url} loop />;
+          return <video controls muted src={url} loop />;
         }
         return <></>;
       },

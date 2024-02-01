@@ -67,7 +67,10 @@ export const mainNavCss = css`
         font-weight: 500;
       }
     }
-    ${mediaQuery.mobile} {
+  }
+  ${mediaQuery.mobile} {
+    gap: 25px;
+    & > * {
       font-size: clamp(1.5rem, 9vw, 2rem);
     }
   }

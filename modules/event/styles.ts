@@ -117,28 +117,41 @@ export const tabsContentWrapperCss = css`
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   transition: all 1s ease;
+`;
+
+export const tabPanelCss = css`
+  height: fit-content;
+  width: 100%;
+  padding: 0 5px;
+  flex-shrink: 0;
+  scroll-snap-align: center;
   & > * {
+    max-width: 100%;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 1rem 0 0.5rem 0;
+  }
+  & > img,
+  & > video {
+    object-fit: contain;
     height: fit-content;
-    width: 100%;
-    padding: 0 5px;
-    flex-shrink: 0;
-    scroll-snap-align: center;
-    & > * {
-      max-width: 100%;
-    }
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      margin: 1rem 0 0.5rem 0;
-    }
-    & > img,
-    & > video {
-      object-fit: contain;
-      height: fit-content;
-      margin: 1rem 0;
+    margin: 1rem 0;
+  }
+
+  &.highlights {
+    display: grid;
+    /* grid-template-columns: repeat(2, calc((90vw - 7.5vw * 2) / 2)); */
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+  }
+  ${mediaQuery.mobile} {
+    &.highlights {
+      grid-template-columns: 1fr;
     }
   }
 `;

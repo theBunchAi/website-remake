@@ -102,6 +102,7 @@ export const mainNavWrapperCss = css`
     gap: 0;
     width: 100%;
     font-size: 0.85rem;
+    grid-template-rows: repeat(3, 1fr);
   }
 `;
 
@@ -116,13 +117,16 @@ export const socialsWrapperCss = css`
     color: inherit;
   }
   .nav {
-    display: flex;
+    display: grid;
+    font-size: 2rem;
+    grid-template-columns: repeat(2, 1em);
+    gap: 0.2em;
   }
   a {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2em;
+    font-size: inherit;
     & * {
       font-size: inherit;
     }
@@ -132,6 +136,9 @@ export const socialsWrapperCss = css`
     align-items: flex-start;
     a {
       font-size: 2.25rem;
+    }
+    .nav {
+      grid-template-columns: repeat(4, 1em);
     }
   }
 `;

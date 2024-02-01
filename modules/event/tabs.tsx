@@ -3,6 +3,7 @@ import ContentfulDocument from "@components/contentful-document";
 import {
   tabButtonCss,
   tabIndicatorCss,
+  tabPanelCss,
   tabsButtonsWrapperCss,
   tabsContentWrapperCss,
   tabsWrapperCss
@@ -62,6 +63,8 @@ const Tabs = (props: EventDetailsItem["tabsCollection"]) => {
         aria-labelledby={"tab-btn-" + tabTitle}
         id={"tab-content-" + tabTitle}
         role="tabpanel"
+        className={tabTitle.toLowerCase().trim() === "highlights" ? "highlights" : undefined}
+        css={tabPanelCss}
       >
         <ContentfulDocument {...tabText} />
       </div>
