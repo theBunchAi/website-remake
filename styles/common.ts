@@ -1,4 +1,4 @@
-const mobileBreakpoint = 900;
+const mobileBreakpoint = 1000;
 
 export const mediaQuery = {
   mobile: `@media only screen and (width < ${mobileBreakpoint}px)`,
