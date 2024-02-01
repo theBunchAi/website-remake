@@ -1,3 +1,4 @@
+import { useLayoutEffect } from "react";
 import type { AppProps } from "next/app";
 import localFont from "next/font/local";
 import Head from "next/head";
@@ -62,6 +63,14 @@ const dmSansFont = localFont({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
+  useLayoutEffect(() => {
+    document
+      .querySelector("meta[name=viewport]")
+      ?.setAttribute(
+        "content",
+        "width=device-width, initial-scale=" + 1 / window.devicePixelRatio + ", maximum-scale=1.0, user-scalable=0"
+      );
+  }, []);
   return (
     <>
       <GoogleTagManager gtmId="GTM-MH5RF4FK" />
