@@ -69,6 +69,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <link rel="dns-prefetch" href="https://images.ctfassets.net" />
         <link rel="preconnect" href="https://images.ctfassets.net" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Header />
       <Component {...pageProps} />
